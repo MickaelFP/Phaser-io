@@ -4,10 +4,10 @@ class TableauM extends Tableau{
         super.preload();
         this.load.image('star', 'assets/star.png');
         this.load.image('monster-violet', 'assets/monster-violet.png');
-        this.load.image('monster-violet', 'assets/monster-violet.png');
-        this.load.image('monster-violet', 'assets/monster-violet.png');
-        this.load.image('monster-violet', 'assets/monster-violet.png');
-        this.load.image('monster-violet', 'assets/monster-violet.png');
+        this.load.image('monster-zombie', 'assets/monster-zombie.png');
+        //this.load.image('monster-violet', 'assets/monster-violet.png');
+        //this.load.image('monster-violet', 'assets/monster-violet.png');
+        //this.load.image('monster-violet', 'assets/monster-violet.png');
     }
     create() {
         super.create();
@@ -26,7 +26,7 @@ class TableauM extends Tableau{
         });
         this.physics.add.overlap(this.player, this.stars, this.ramasserEtoile, null, this);
 
-        //notre monstre
+        //nos monstres
         this.monstre=this.physics.add.sprite(300,this.sys.canvas.height-70,"monster-violet");
         this.monstre.setOrigin(0,0);
         this.monstre.setDisplaySize(64,64);
@@ -35,12 +35,12 @@ class TableauM extends Tableau{
         this.monstre.setVelocityX(50);
         this.physics.add.overlap(this.player, this.monstre, this.hitSpike, null, this);
 
-        this.monstre=this.physics.add.sprite(200,this.sys.canvas.height-70,"monster-violet");
-        this.monstre.setOrigin(0,0);
+        this.monstre=this.physics.add.sprite(300,this.sys.canvas.height-70,"monster-zombie");
+        this.monstre.setOrigin(300,0);
         this.monstre.setDisplaySize(64,64);
         this.monstre.setCollideWorldBounds(true);
         this.monstre.setBounce(1);
-        this.monstre.setVelocityX(50);
+        this.monstre.setVelocityX(40);
         this.physics.add.overlap(this.player, this.monstre, this.hitSpike, null, this);
 
         /*
