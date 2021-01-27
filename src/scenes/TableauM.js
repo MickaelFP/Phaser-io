@@ -42,7 +42,7 @@ class TableauM extends Tableau{
         this.monstre.setBounce(0);
         this.monstre.setVelocityX(20);
         this.physics.add.overlap(this.player, this.monstre, this.hitSpike, null, this);
-
+        /*
         this.monstre=this.physics.add.sprite(300,this.sys.canvas.height-70,"monster-violet");
         this.monstre.setOrigin(550,60);
         this.monstre.setDisplaySize(40,40);
