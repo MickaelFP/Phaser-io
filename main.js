@@ -16,9 +16,9 @@ let config = {
     scene: [
         new Ui(),
 
+        new TableauM("Des monstres partout!"),
         new Tableau00("Des étoiles"),
         new Tableau00A("Toto"),
-        new TableauM("Des monstres partout!"),
         new Tableau01("Des plateformes"),
         new Tableau02("Plein d'étoiles"),
         new Tableau03("Des plateformes qui bougent"),
