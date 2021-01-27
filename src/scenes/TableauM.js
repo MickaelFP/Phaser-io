@@ -4,7 +4,7 @@ class TableauM extends Tableau{
         super.preload();
         this.load.image('star', 'assets/star.png');
         this.load.image('monster-violet', 'assets/monster-violet.png');
-        //this.load.image('monster-zombie', 'assets/monster-zombie.png');
+        this.load.image('monster-zombie', 'assets/monster-zombie.png');
         //this.load.image('monster-fly', 'assets/monster-fly.png');
         //this.load.image('monster-fly2', 'assets/monster-fly2.png');
 
@@ -29,7 +29,7 @@ class TableauM extends Tableau{
         //nos monstres
         this.monstre=this.physics.add.sprite(300,this.sys.canvas.height-70,"monster-violet");
         this.monstre.setOrigin(600,0);
-        this.monstre.setDisplaySize(64,64);
+        this.monstre.setDisplaySize(40,40);
         this.monstre.setCollideWorldBounds(true);
         this.monstre.setBounce(1);
         this.monstre.setVelocityX(50);
@@ -37,7 +37,7 @@ class TableauM extends Tableau{
 
         this.monstre=this.physics.add.sprite(300,this.sys.canvas.height-70,"monster-zombie");
         this.monstre.setOrigin(400,0);
-        this.monstre.setDisplaySize(64,64);
+        this.monstre.setDisplaySize(40,40);
         this.monstre.setCollideWorldBounds(true);
         this.monstre.setBounce(0);
         this.monstre.setVelocityX(20);
@@ -45,7 +45,7 @@ class TableauM extends Tableau{
 
         this.monstre=this.physics.add.sprite(300,this.sys.canvas.height-70,"monster-violet");
         this.monstre.setOrigin(550,60);
-        this.monstre.setDisplaySize(64,64);
+        this.monstre.setDisplaySize(40,40);
         this.monstre.setCollideWorldBounds(true);
         this.monstre.setBounce(1);
         this.monstre.setVelocityX(75);
@@ -53,10 +53,10 @@ class TableauM extends Tableau{
        
         this.monstre=this.physics.add.sprite(300,this.sys.canvas.height-70,"monster-violet");
         this.monstre.setOrigin(300,0);
-        this.monstre.setDisplaySize(64,64);
+        this.monstre.setDisplaySize(40,40);
         this.monstre.setCollideWorldBounds(true);
         this.monstre.setBounce(0);
-        this.monstre.setVelocityX(100);
+        this.monstre.setVelocityX(90);
         this.physics.add.overlap(this.player, this.monstre, this.hitSpike, null, this);
 
         //new MonsterFly(this,400,80);
