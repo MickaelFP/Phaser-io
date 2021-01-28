@@ -32,7 +32,7 @@ class TableauM extends Tableau{
         this.monstre.setDisplaySize(64,64);
         this.monstre.setCollideWorldBounds(true);
         this.monstre.setBounce(1);
-        this.monstre.setVelocityX(100);
+        this.monstre.setVelocityX(50);
         this.physics.add.overlap(this.player, this.monstre, this.hitSpike, null, this);
 
         this.monstre=this.physics.add.sprite(300,this.sys.canvas.height-70,"monster-zombie");
@@ -40,7 +40,7 @@ class TableauM extends Tableau{
         this.monstre.setDisplaySize(64,64);
         this.monstre.setCollideWorldBounds(true);
         this.monstre.setBounce(1);
-        this.monstre.setVelocityX(60);
+        this.monstre.setVelocityX(80);
         this.physics.add.overlap(this.player, this.monstre, this.hitSpike, null, this);
         /*
         this.monstre=this.physics.add.sprite(300,this.sys.canvas.height-70,"monster-violet");
