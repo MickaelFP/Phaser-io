@@ -6,6 +6,7 @@ class TableauM extends Tableau{
         this.load.image('monster-violet', 'assets/monster-violet.png');
         this.load.image('monster-zombie', 'assets/monster-zombie.png');
         this.load.image('monster-arraignee', 'assets/monster-arraignee.png');
+        this.load.image('monster-slime', 'assets/monster-slime.png');
         this.load.image('monster-fly', 'assets/monster-fly.png');
         //this.load.image('monster-fly2', 'assets/monster-fly2.png');
 
@@ -52,7 +53,7 @@ class TableauM extends Tableau{
         this.monstre.setVelocityX(70);
         this.physics.add.overlap(this.player, this.monstre, this.hitSpike, null, this);
         
-        this.monstre=this.physics.add.sprite(300,this.sys.canvas.height-64,"monster-violet");
+        this.monstre=this.physics.add.sprite(300,this.sys.canvas.height-64,"monster-slime");
         this.monstre.setOrigin(0,0);
         this.monstre.setDisplaySize(64,64);
         this.monstre.setCollideWorldBounds(true);
