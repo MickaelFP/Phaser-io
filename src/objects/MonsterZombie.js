@@ -4,13 +4,20 @@ class MonsterZombie extends ObjetEnnemi{
      * @param {Tableau} scene
      * @param x
      * @param y
-     * @param v
      */
-    constructor(scene, x, y, v) {                                                                      //OBLIGATOIRE
-        super(scene, x, y, v, "monster-zombie");                                                       //OBLIGATOIRE
+    constructor(scene, x, y) {                                                                      //OBLIGATOIRE
+        super(scene, x, y,"monster-zombie");                                                       //OBLIGATOIRE
         //pas de gravité
         this.body.allowGravity=false;
+        
+        this.monstre=this.physics.add.sprite(300,this.sys.canvas.height-70,"monster-zombie");
+        this.setDisplaySize(64,64);
+        this.setCollideWorldBounds(true);
+        this.setBounce(1);
+        this.setVelocityX(30);
+        this.physics.add.overlap(this.player, this.monstre, this.hitSpike, null, this);
 
+        /*
         //gestion de la taille
         this.setDisplaySize(64,64);
 
@@ -54,10 +61,9 @@ class MonsterZombie extends ObjetEnnemi{
                 onComplete: function () {
                     me.start();
                 }
-            })
-
+            })  */
     }
-
+     /*
     start(){
         this.scene.tweens.add({
             targets: this,
@@ -78,7 +84,7 @@ class MonsterZombie extends ObjetEnnemi{
                 yoyo: -1,
                 repeat:-1
             }
-        });
-    }
+        }); 
+    }   */
 
 }
