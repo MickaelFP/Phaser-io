@@ -64,9 +64,9 @@ class TableauM extends Tableau{
         
         new MonsterFly(this,400,100);
         new MonsterZombie(this,600,height-70);
-        new MonsterLoupgarou(this,600,100);
-        new MonsterAraignee(this,600,100);
-        new MonsterSlime(this,600,100);
+        new MonsterLoupgarou(this,600,height);
+        new MonsterAraignee(this,600,height-140);
+        new MonsterSlime(this,600,height);
 
         //new MonsterFly(this,400,0);
         //new MonsterFly2(this,600,50);

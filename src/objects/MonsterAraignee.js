@@ -15,6 +15,6 @@ class MonsterAraignee extends ObjetEnnemi{
         this.setCollideWorldBounds(true);
         this.setBounce(1);
         this.setVelocityX(70);
-        this.physics.add.overlap(this.player, this.monstre, this.hitSpike, null, this);
+        //this.physics.add.overlap(this.player, this.monstre, this.hitSpike, null, this);
     }
 }

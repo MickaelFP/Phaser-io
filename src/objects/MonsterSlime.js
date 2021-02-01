@@ -15,7 +15,7 @@ class MonsterSlime extends ObjetEnnemi{
         this.setCollideWorldBounds(true);
         this.setBounce(0);
         this.setVelocityX(0);
-        this.physics.add.overlap(this.player, this.monstre, this.hitSpike, null, this);
+        //this.physics.add.overlap(this.player, this.monstre, this.hitSpike, null, this);
     
     }
 }
