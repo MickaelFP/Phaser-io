@@ -8,7 +8,7 @@ class MonsterZombie extends ObjetEnnemi{
     constructor(scene, x, y) {                                                                      //OBLIGATOIRE
         super(scene, x, y,"monster-zombie");                                                       //OBLIGATOIRE
         //pas de gravité
-        this.body.allowGravity=false;
+        this.body.allowGravity=true;
         
         //this.physics.add.sprite(300,this.sys.canvas.height-70,"monster-zombie");
         this.setDisplaySize(64,64);
