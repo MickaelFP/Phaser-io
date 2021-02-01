@@ -15,6 +15,6 @@ class MonsterZombie extends ObjetEnnemi{
         this.setCollideWorldBounds(true);
         this.setBounce(1);
         this.setVelocityX(30);
-        this.physics.add.overlap(this.player, this.monstre, this.hitSpike, null, this);
+        //this.physics.overlap(this.player, this.hitSpike, null, this);
     }
 }
