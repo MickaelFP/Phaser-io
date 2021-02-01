@@ -4,9 +4,10 @@ class MonsterZombie extends ObjetEnnemi{
      * @param {Tableau} scene
      * @param x
      * @param y
+     * @param v
      */
-    constructor(scene, x, y) {                                                                      //OBLIGATOIRE
-        super(scene, x, y, "monster-zombie");                                                       //OBLIGATOIRE
+    constructor(scene, x, y, v) {                                                                      //OBLIGATOIRE
+        super(scene, x, y, v, "monster-zombie");                                                       //OBLIGATOIRE
         //pas de gravité
         this.body.allowGravity=false;
 
@@ -21,19 +22,23 @@ class MonsterZombie extends ObjetEnnemi{
 
         // X
         this.originalX=x;
-        this.minX=x-200;
-        this.maxX=x+200;
+        this.minX=x; //-200;
+        this.maxX=x; //+200;
 
         // Y
         this.originalY=y;
-        this.minY=y-5;
-        this.maxY=y+5;
+        this.minY=y; //-5;
+        this.maxY=y; //+5;
+
+        // V
+        this.vitesse=v;
 
         // on applique les propriété du début de l'animation
         this.x=this.minX;
         this.y=this.minY;
         this.alpha=0;
         let me=this;
+    
 
         //on fait apparaitre notre objet avec un petit delay, puis on lance l'animation
         //ceci a pour effet de décaler les animations pour ce même objet   ;   animation tourner
