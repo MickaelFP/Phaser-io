@@ -9,8 +9,8 @@ class MonsterLoupgarou extends ObjetEnnemi{
         super(scene, x, y, "monster-loupgarou");
         //pas de gravité
         this.body.allowGravity=false;
-        
-        this.physics.add.sprite(300,this.sys.canvas.height-70,"monster-loupgarou");
+
+        //this.physics.add.sprite(300,this.sys.canvas.height-70,"monster-loupgarou");
         this.setDisplaySize(64,64);
         this.setCollideWorldBounds(true);
         this.setBounce(1);
