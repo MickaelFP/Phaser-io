@@ -36,7 +36,7 @@ class MonsterZombie extends ObjetEnnemi{
         let me=this;
 
         //on fait apparaitre notre objet avec un petit delay, puis on lance l'animation
-        //ceci a pour effet de décaler les animations pour ce même objet
+        //ceci a pour effet de décaler les animations pour ce même objet   ;   animation tourner
         scene.tweens.add({
                 targets:this,
                 duration:200,
