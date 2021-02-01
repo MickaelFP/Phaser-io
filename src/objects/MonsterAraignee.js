@@ -8,7 +8,7 @@ class MonsterAraignee extends ObjetEnnemi{
     constructor(scene, x, y) {
         super(scene, x, y, "monster-araignee");
         //pas de gravité
-        this.body.allowGravity=false;
+        this.body.allowGravity=true;
 
         //this.physics.add.sprite(300,this.sys.canvas.height-180,"monster-araignee");
         this.setDisplaySize(64,64);
