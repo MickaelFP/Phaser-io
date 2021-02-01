@@ -5,10 +5,10 @@ class MonsterZombie extends ObjetEnnemi{
      * @param x
      * @param y
      */
-    constructor(scene, x, y) {
-        super(scene, x, y, "monster-zombie");
+    constructor(scene, x, y) {                                                                      //OBLIGATOIRE
+        super(scene, x, y, "monster-zombie");                                                       //OBLIGATOIRE
         //pas de gravité
-        this.body.allowGravity=true;
+        this.body.allowGravity=false;
 
         //gestion de la taille
         this.setDisplaySize(64,64);
