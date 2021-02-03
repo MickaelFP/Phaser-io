@@ -24,7 +24,7 @@ class MonsterZombie extends ObjetEnnemi{
         
         // Y
         this.originalY=y;
-        this.minY=y;
+        this.minY=y+64;
         this.maxY=y+10;
         
         // on applique les propriété du début de l'animation
