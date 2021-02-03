@@ -19,7 +19,7 @@ class MonsterZombie extends ObjetEnnemi{
 
         // X
         this.originalX=x;
-        this.minX=x-400;
+        this.minX=x-300;
         this.maxX=x+400;
         
         // Y
