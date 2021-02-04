@@ -1,4 +1,4 @@
-class TableauM extends Tableau{
+class TableauM extends Tableau{ 
 
     preload() {
         super.preload();
@@ -39,9 +39,9 @@ class TableauM extends Tableau{
         this.physics.add.overlap(this.player, this.monstre, this.hitSpike, null, this);*/
 
         new MonsterFly(this,400,100);
-        new MonsterZombie(this,448,height);
+        new MonsterZombie(this,448,408);
         new MonsterLoupgarou(this,600,height-40);
-        new MonsterAraignee(this,600,height-140);
+        new MonsterAraignee(this,448,height-140);
         new MonsterSlime(this,600,height);
 
     }

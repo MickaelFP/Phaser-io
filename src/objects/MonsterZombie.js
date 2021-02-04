@@ -13,8 +13,8 @@ class MonsterZombie extends ObjetEnnemi{
         //this.physics.add.sprite(300,this.sys.canvas.height-70,"monster-zombie");
         this.setDisplaySize(64,64);
         this.setCollideWorldBounds(true);
-        this.setBounce(1);
-        this.setVelocityX(30);
+        //this.setBounce(1);
+        this.setVelocityX(0);
         //this.physics.add.overlap(this.player, this.monstre, this.hitSpike, null, this);
 
         // X
@@ -24,8 +24,8 @@ class MonsterZombie extends ObjetEnnemi{
         
         // Y
         this.originalY=y;
-        this.minY=y+64;
-        this.maxY=y+10;
+        this.minY=y+10;
+        this.maxY=y;
         
         // on applique les propriété du début de l'animation
         this.x=this.minX;
@@ -37,6 +37,7 @@ class MonsterZombie extends ObjetEnnemi{
             targets:this,
             duration:200,
             delay:Math.random()*1000,
+            
             alpha:{
                 startDelay:Math.random()*5000,
                 from:0,
@@ -47,7 +48,7 @@ class MonsterZombie extends ObjetEnnemi{
             }
         })
 
-}
+    }
 
     start(){
         this.scene.tweens.add({
@@ -55,11 +56,12 @@ class MonsterZombie extends ObjetEnnemi{
             x: {
                 from: this.minX,
                 to:this.maxX,
-                duration: 10*1000,
+                duration: 10*2000,
                 ease: 'Sine.easeInOut',
                 yoyo: -1,
                 repeat:-1,
                 flipX:true,
+                
             },
             y: {
                 from: this.minY,

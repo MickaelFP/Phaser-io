@@ -70,7 +70,7 @@ class Tableau extends Phaser.Scene{
         }
          */
     }
-
+    
     /**
      * Aïeee ça fait mal
      * @param player

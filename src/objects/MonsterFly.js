@@ -16,7 +16,7 @@ class MonsterFly extends ObjetEnnemi{
         //on réduit un peu la zone de hit
         this.setBodySize(this.body.width-400,this.body.height-400);
         this.setOffset(150, 250);
-        this.setVelocityX(80);
+        this.setVelocityX(0);
 
         //définir les propriété que l'on va utiliser dans notre animation
 
@@ -60,7 +60,7 @@ class MonsterFly extends ObjetEnnemi{
             x: {
                 from: this.minX,
                 to:this.maxX,
-                duration: 10*1000,
+                duration: 10*500,
                 ease: 'Sine.easeInOut',
                 yoyo: -1,
                 repeat:-1,
