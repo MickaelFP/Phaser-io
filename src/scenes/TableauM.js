@@ -11,20 +11,22 @@ class TableauM extends Tableau{
 
         //this.load.image('monster-fly2', 'assets/monster-fly2.png');
 
-    }
+    } // FIN DE PRELOAD
     create() {
         super.create();
         //quelques étoiles
-        let largeur=64*2;
+        let largeur=128*2;
         this.stars=this.physics.add.group();
-        for(let posX=largeur/2;posX<largeur*7;posX+=largeur){
+
+
+        for(let posX=largeur/2;posX<largeur*3;posX+=largeur){
             this.stars.create(posX ,0,"star");
         }
         this.stars.children.iterate(function (child) {
-            child.setBounce(1);
+            child.setBounce(0.3);
             child.setGravity(1);
             child.setCollideWorldBounds(true);
-            child.setVelocity( 0,Phaser.Math.Between(-100, 100));
+            child.setVelocity(10,Phaser.Math.Between(-100, 100));
             child.setMaxVelocity(0,500);
         });
         this.physics.add.overlap(this.player, this.stars, this.ramasserEtoile, null, this);
@@ -44,6 +46,6 @@ class TableauM extends Tableau{
         new MonsterAraignee(this,448,height-140);
         new MonsterSlime(this,600,height);
 
-    }
+    } // FIN DE CREATE
 
-}
+} // FIN DE LA CLASS TABLEAUM
