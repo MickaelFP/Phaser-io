@@ -76,14 +76,13 @@ class Tableau extends Phaser.Scene{
      * @param player
      * @param spike
      */
-    hitSpike (player, spike)
+    /*hitSpike (player, spike)
     {
         this.physics.pause();
         player.setTint(0xff0000);
         player.anims.play('turn');
         this.scene.restart();
-
-    }
+    }*/
 
     /**
      * Pour reset cette scène proprement
