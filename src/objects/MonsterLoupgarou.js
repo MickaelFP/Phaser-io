@@ -1,12 +1,14 @@
 
-class MonsterLoupgarou extends ObjetEnnemi{
+class MonsterLoupgarou extends ObjetEnnemi
+{
     /**
      *
      * @param {Tableau} scene
      * @param x
      * @param y
      */
-    constructor(scene, x, y) {                                                                      //OBLIGATOIRE
+    constructor(scene, x, y) 
+    {                                                                      //OBLIGATOIRE
         super(scene, x, y, "monster-loupgarou");                                                       //OBLIGATOIRE
         //pas de gravité
         this.body.allowGravity=false;
@@ -25,10 +27,10 @@ class MonsterLoupgarou extends ObjetEnnemi{
         
         // Y
         this.originalY=y;
-        this.minY=y-40;
-        this.maxY=y-5;
+        this.minY=y-28;
+        this.maxY=y-33;
         
-     // on applique les propriété du début de l'animation
+        // on applique les propriété du début de l'animation
         this.x=this.minX;
         this.y=this.minY;
         this.alpha=0;
@@ -36,24 +38,28 @@ class MonsterLoupgarou extends ObjetEnnemi{
 
         //on fait apparaitre notre objet avec un petit delay, puis on lance l'animation
         //ceci a pour effet de décaler les animations pour ce même objet
-        scene.tweens.add({
+        scene.tweens.add(
+        {
             targets:this,
             duration:200,
             delay:Math.random()*1000,
             
-            alpha:{
+            alpha:
+            {
                 startDelay:Math.random()*5000,
                 from:0,
                 to:1,
             },
-            onComplete: function () {
+            onComplete: function() 
+            {
                 me.start();
-             }
+            }
         })
 
     } // FIN DU CONSTRUCTOR
 
-    start(){
+    start()
+    {
         this.scene.tweens.add(
             {
             targets: this,
