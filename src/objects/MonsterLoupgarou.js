@@ -18,6 +18,7 @@ class MonsterLoupgarou extends ObjetEnnemi
         this.setCollideWorldBounds(true);
         //this.setBounce(1);
         this.setVelocityX(0);
+        this.setBodySize(this.body.width-20,this.body.height);
         //this.physics.add.overlap(this.player, this.monstre, this.hitSpike, null, this);
 
         // X
