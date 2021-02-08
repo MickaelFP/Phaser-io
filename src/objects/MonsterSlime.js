@@ -11,7 +11,7 @@ class MonsterSlime extends ObjetEnnemi{
         this.body.allowGravity=false;
 
         //this.physics.add.sprite(300,this.sys.canvas.height-64,"monster-slime");
-        this.setDisplaySize(64,55);
+        this.setDisplaySize(64,50);
         this.setCollideWorldBounds(true);
         this.setBounce(0);
         this.setVelocityX(0);
