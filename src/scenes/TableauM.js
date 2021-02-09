@@ -9,7 +9,7 @@ class TableauM extends Tableau{
         this.load.image('monster-fly', 'assets/monster-fly.png');
         this.load.image('monster-loupgarou', 'assets/monster-loupgarou.png');
         this.load.image('cimetiereBackground', 'assets/CimetiereBackground.png');
-        this.load.image('ground', 'assets/ground.png');
+        this.load.image('sol', 'assets/sol.png');
 
         //this.load.image('monster-fly2', 'assets/monster-fly2.png');
 
@@ -32,7 +32,7 @@ class TableauM extends Tableau{
         });
         this.physics.add.overlap(this.player, this.stars, this.ramasserEtoile, null, this);
 
-        let rouge=this.physics.add.sprite(0,height-64,"ground");
+        let rouge=this.physics.add.sprite(0,height-64,"sol");
         rouge.setDisplaySize(width,64)//taille de l'objet
         rouge.setOrigin(0,0);//pour positionner plus facilement
         rouge.body.allowGravity=0; //la gravité n'a pas d'effet ici
