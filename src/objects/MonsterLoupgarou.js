@@ -23,8 +23,8 @@ class MonsterLoupgarou extends ObjetEnnemi
 
         // X
         this.originalX=x;
-        this.minX=x-400;
-        this.maxX=x+400;
+        this.minX=x-1900;
+        this.maxX=x+1900;
         
         // Y
         this.originalY=y;
@@ -68,7 +68,7 @@ class MonsterLoupgarou extends ObjetEnnemi
             {
                 from: this.minX,
                 to:this.maxX,
-                duration: 10*500,
+                duration: 10*1500,
                 ease: 'Sine.easeInOut',
                 yoyo: -1,
                 repeat:-1,

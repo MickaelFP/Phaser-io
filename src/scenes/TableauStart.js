@@ -1,4 +1,4 @@
-class TableauM extends Tableau{ 
+class TableauStart extends Tableau{ 
 
     preload() {
         super.preload();
@@ -73,4 +73,4 @@ class TableauM extends Tableau{
 
     } // FIN DE CREATE
 
-} // FIN DE LA CLASS TABLEAUM
+} // FIN DE LA CLASSS TABLEAUSTART
