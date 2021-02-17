@@ -17,6 +17,7 @@ class TableauCimetiere extends Tableau{
         //this.load.image('cimetiereBackground', 'assets/CimetiereBackground.png');
         //this.load.image('tombes', 'assets/tombes.png');
         this.load.image('barriere', 'assets/grilleCiel.png');
+        this.load.image('blood', 'assets/bloodblack.png');
         //this.load.image('barriere', 'assets/barriere.png'); / image corrompue, barriere sans fond impossible !!!
 
         //this.load.image('monster-fly2', 'assets/monster-fly2.png');

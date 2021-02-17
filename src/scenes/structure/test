@@ -1,26 +1,10 @@
-/**
- * Toutes les fonctions propres à un tableau dans notre jeu.
- * Cette classe n'est pas à utiliser directement, elle doit être extend !
- */
-class Tableau extends Phaser.Scene{
-    /**
-     *
-     * @param {String} key identifiant de la scène à jouer
-     */
-    constructor(key) {
-        super(key);
-    }
-
-    /**
-     * Par défaut on charge un fond et le player
-     */
     preload(){
         this.load.image('sky', 'assets/sky.png');
+        this.load.image('blood', 'assets/blood.png');
         this.load.image('spike', 'assets/spike.png');
-        this.load.image('blood', 'assets/bloodblack.png');
         this.load.spritesheet('player',
             'assets/player.png',
-            { frameWidth: 32, frameHeight: 48  }  //default(32,48);requiered(30,65)
+            { frameWidth: 32, frameHeight: 48  }
         );
     }
     create(){
@@ -39,18 +23,18 @@ class Tableau extends Phaser.Scene{
          * @type {Player}
          */
         this.player=new Player(this,0,0);
-        
+
         this.blood=this.add.sprite(this.sys.canvas.width/2,this.sys.canvas.height/2,"blood")
         this.blood.displayWidth=64;
         this.blood.displayHeight=64;
         this.blood.visible=false;
+
     }
     update(){
         super.update();
         this.player.move();
     }
 
-    // on définit une animation de destruction de monstre
     /**
      *
      * @param {Sprite} object Objet qui saigne
@@ -78,7 +62,7 @@ class Tableau extends Phaser.Scene{
                 onComplete();
             }
         })
-    } // FIN DE SAIGNE
+    }
 
     ramasserEtoile (player, star)
     {
@@ -97,32 +81,22 @@ class Tableau extends Phaser.Scene{
         if(totalActive===0){
             this.win();
         }
-        /*
-        // this.stars est un groupe (plus tard)
-        if (this.stars.countActive(true) === 0)
-        {
-           this.win();
-        }
-         */
     }
-    
+
     /**
      * Aïeee ça fait mal
      * @param player
      * @param spike
      */
-    // on définit une fonction de destruction
     hitSpike (player, spike)
     {
-
         this.physics.pause();
         player.setTint(0xff0000);
         player.anims.play('turn');
         this.scene.restart();
 
-    } // FIN DE HITSPIKE
+    }
 
-    // on définit qui meurt, quand et pourquoi
     /**
      * Quand on touche un monstre
      * si on le touche par en haut on le tue, sinon c'est lui qui nous tue
@@ -160,72 +134,59 @@ class Tableau extends Phaser.Scene{
                         me.player.isDead=false;
                         me.scene.restart();
                     })
+
                 }
+
+
             }
         }
-    } // FIN DE HITMONSTER
+
+    }
 
     /**
      * Pour reset cette scène proprement
      * @private
      */
-    _destroy()
-    {
-
+    _destroy(){
         this.player.stop();
         this.scene.stop();
-
-    } // FIN DE DESTROY
+    }
 
     /**
      * Quand on a gagné
      */
-    // on définit ce qui se passe en cas de victoire
-    win()
-    {
-
+    win(){
         Tableau.suivant();
-
-    } // FIN DE WIN
+    }
 
     /**
      * Va au tableau suivant
      */
-    static suivant()
-    {
+    static suivant(){
         let ceSeraLaSuivante=false;
         let nextScene=null;
-        if(Tableau.current)
-        {
-            for(let sc of game.scene.scenes)
-            {
-                if(sc.scene.key !== "ui")
-                {
-                    if(!nextScene)
-                    {
-                        if(ceSeraLaSuivante)
-                        {
+        if(Tableau.current){
+            for(let sc of game.scene.scenes){
+                if(sc.scene.key !== "ui"){
+                    if(!nextScene){
+                        if(ceSeraLaSuivante){
                             nextScene=sc;
                         }
-                        if(sc.scene.key === Tableau.current.scene.key)
-                        {
+                        if(sc.scene.key === Tableau.current.scene.key){
                             ceSeraLaSuivante=true;
                         }
                     }
                 }
             }
         }
-        if(!nextScene)
-        {
+        if(!nextScene){
             nextScene = game.scene.scenes[0];
         }
         Tableau.goTableau(nextScene);
     }
 
-    static goTableau(tableau)
-    {
-        if(Tableau.current)
-        {
+    static goTableau(tableau){
+        if(Tableau.current){
             Tableau.current._destroy();
         }
         game.scene.start(tableau);
