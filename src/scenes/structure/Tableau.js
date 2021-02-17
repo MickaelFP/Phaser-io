@@ -17,6 +17,7 @@ class Tableau extends Phaser.Scene{
     preload(){
         this.load.image('sky', 'assets/sky.png');
         this.load.image('spike', 'assets/spike.png');
+        this.load.image('blood', 'assets/blood.jpg');
         this.load.spritesheet('player',
             'assets/player.png',
             { frameWidth: 32, frameHeight: 48  }  //default(32,48);requiered(30,65)
@@ -38,12 +39,46 @@ class Tableau extends Phaser.Scene{
          * @type {Player}
          */
         this.player=new Player(this,0,0);
-
+        
+        this.blood=this.add.sprite(this.sys.canvas.width/2,this.sys.canvas.height/2,"blood")
+        this.blood.displayWidth=64;
+        this.blood.displayHeight=64;
+        this.blood.visible=false;
     }
     update(){
         super.update();
         this.player.move();
     }
+
+    // on définit une animation de destruction de monstre
+    /**
+     *
+     * @param {Sprite} object Objet qui saigne
+     * @param {function} onComplete Fonction à appeler quand l'anim est finie
+     */
+    saigne(object,onComplete){
+        let me=this;
+        me.blood.visible=true;
+        me.blood.rotation = Phaser.Math.Between(0,6);
+        me.blood.x=object.x;
+        me.blood.y=object.y;
+        me.tweens.add({
+            targets:me.blood,
+            duration:200,
+            displayHeight:{
+                from:40,
+                to:70,
+            },
+            displayWidth:{
+                from:40,
+                to:70,
+            },
+            onComplete: function () {
+                me.blood.visible=false;
+                onComplete();
+            }
+        })
+    } // FIN DE SAIGNE
 
     ramasserEtoile (player, star)
     {
@@ -76,58 +111,121 @@ class Tableau extends Phaser.Scene{
      * @param player
      * @param spike
      */
-    /*hitSpike (player, spike)
+    // on définit une fonction de destruction
+    hitSpike (player, spike)
     {
+
         this.physics.pause();
         player.setTint(0xff0000);
         player.anims.play('turn');
         this.scene.restart();
-    }*/
+
+    } // FIN DE HITSPIKE
+
+    // on définit qui meurt, quand et pourquoi
+    /**
+     * Quand on touche un monstre
+     * si on le touche par en haut on le tue, sinon c'est lui qui nous tue
+     * @param {Player} player
+     * @param {Phaser.Physics.Arcade.Sprite} monster
+     */
+    hitMonster(player, monster){
+        let me=this;
+        if(monster.isDead !== true){ //si notre monstre n'est pas déjà mort
+            if(
+                // si le player descend
+                player.body.velocity.y > 0
+                // et si le bas du player est plus haut que le monstre
+                && player.getBounds().bottom < monster.getBounds().top+30
+
+            ){
+                ui.gagne();
+                monster.isDead=true; //ok le monstre est mort
+                monster.visible=false;
+                this.saigne(monster,function(){
+                    //à la fin de la petite anim...ben il se passe rien :)
+                })
+                //notre joueur rebondit sur le monstre
+                player.directionY=500;
+            }else{
+                //le joueur est mort
+                if(!me.player.isDead){
+                    me.player.isDead=true;
+                    me.player.visible=false;
+                    //ça saigne...
+                    me.saigne(me.player,function(){
+                        //à la fin de la petite anim, on relance le jeu
+                        me.blood.visible=false;
+                        me.player.anims.play('turn');
+                        me.player.isDead=false;
+                        me.scene.restart();
+                    })
+                }
+            }
+        }
+    } // FIN DE HITMONSTER
 
     /**
      * Pour reset cette scène proprement
      * @private
      */
-    _destroy(){
+    _destroy()
+    {
+
         this.player.stop();
         this.scene.stop();
-    }
+
+    } // FIN DE DESTROY
 
     /**
      * Quand on a gagné
      */
-    win(){
+    // on définit ce qui se passe en cas de victoire
+    win()
+    {
+
         Tableau.suivant();
-    }
+
+    } // FIN DE WIN
 
     /**
      * Va au tableau suivant
      */
-    static suivant(){
+    static suivant()
+    {
         let ceSeraLaSuivante=false;
         let nextScene=null;
-        if(Tableau.current){
-            for(let sc of game.scene.scenes){
-                if(sc.scene.key !== "ui"){
-                    if(!nextScene){
-                        if(ceSeraLaSuivante){
+        if(Tableau.current)
+        {
+            for(let sc of game.scene.scenes)
+            {
+                if(sc.scene.key !== "ui")
+                {
+                    if(!nextScene)
+                    {
+                        if(ceSeraLaSuivante)
+                        {
                             nextScene=sc;
                         }
-                        if(sc.scene.key === Tableau.current.scene.key){
+                        if(sc.scene.key === Tableau.current.scene.key)
+                        {
                             ceSeraLaSuivante=true;
                         }
                     }
                 }
             }
         }
-        if(!nextScene){
+        if(!nextScene)
+        {
             nextScene = game.scene.scenes[0];
         }
         Tableau.goTableau(nextScene);
     }
 
-    static goTableau(tableau){
-        if(Tableau.current){
+    static goTableau(tableau)
+    {
+        if(Tableau.current)
+        {
             Tableau.current._destroy();
         }
         game.scene.start(tableau);
@@ -169,7 +267,7 @@ saigne(object,onComplete){
                 onComplete();
             }
         })
-    }
+}
 
 */
 

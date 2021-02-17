@@ -9,10 +9,15 @@ class TableauCimetiere extends Tableau{
         this.load.image('monster-slime', 'assets/monster-slime.png');
         this.load.image('monster-fly', 'assets/monster-fly.png');
         this.load.image('monster-loupgarou', 'assets/monster-loupgarou.png');
-        this.load.image('cimetiereBackground', 'assets/CimetiereBackground.png');
-        this.load.image('skyNuit', 'assets/sky_nuit.png');
-        this.load.image('sol', 'assets/sol.png');
+
+        this.load.image('nuitEtoile', 'assets/nuitEtoile.png');
+        this.load.image('sol', 'assets/sol_4000.png');
         this.load.image('platformStone', 'assets/platformStone.png');
+        this.load.image('tombes', 'assets/tombes.png');
+        //this.load.image('cimetiereBackground', 'assets/CimetiereBackground.png');
+        //this.load.image('tombes', 'assets/tombes.png');
+        this.load.image('barriere', 'assets/grilleCiel.png');
+        //this.load.image('barriere', 'assets/barriere.png'); / image corrompue, barriere sans fond impossible !!!
 
         //this.load.image('monster-fly2', 'assets/monster-fly2.png');
 
@@ -106,24 +111,43 @@ class TableauCimetiere extends Tableau{
             0,
             this.sys.canvas.width,
             this.sys.canvas.height,
-            'cimetiereBackground'
+            'barriere'
         );
         this.sky.setOrigin(0,0);
         this.sky.setScrollFactor(0);//fait en sorte que le ciel ne suive pas la caméra
+        //this.sky.alpha=0.3;
 
-        //on ajoute une deuxième couche de ciel
+        
+        //on ajoute une deuxième couche/plan
         this.sky2=this.add.tileSprite
         (
             0,
             0,
             this.sys.canvas.width,
             this.sys.canvas.height,
-            'skyNuit'
+            'nuitEtoile'
         );
         this.sky2.setScrollFactor(0);
         this.sky2.setOrigin(0,0);
         this.sky2.alpha=0.2;
-        //this.sky.tileScaleX=this.sky.tileScaleY=0.8;
+        //this.sky2.tileScaleX=this.sky.tileScaleY=0.8;
+        
+        //on ajoute une troixième couche/plan
+        
+        
+        //on ajoute une deuxième couche de ciel
+        this.sky3=this.add.tileSprite
+        (
+            0,
+            0,
+            this.sys.canvas.width,
+            this.sys.canvas.height,
+            'tombes'
+        );
+        this.sky3.setScrollFactor(0);
+        this.sky3.setOrigin(0,0);
+        //this.sky3.alpha=0.8;
+        
 
         //fait passer les éléments devant le ciel
         this.platforms.setDepth(10)
@@ -143,11 +167,16 @@ class TableauCimetiere extends Tableau{
     {
         super.update();
         //le ciel se déplace moins vite que la caméra pour donner un effet paralax
-        this.sky.tilePositionX=this.cameras.main.scrollX;//*0.6;
-        this.sky.tilePositionY=this.cameras.main.scrollY;//*0.2;
-        //le deuxième ciel se déplace moins vite pour accentuer l'effet
-        this.sky2.tilePositionX=this.cameras.main.scrollX*0.3+500;
-        this.sky2.tilePositionY=this.cameras.main.scrollY*0.1+30;
+        this.sky3.tilePositionX=this.cameras.main.scrollX;//*0.6;
+        this.sky3.tilePositionY=this.cameras.main.scrollY+22;//*0.2;
+        ///le deuxième plan se déplace moins vite pour accentuer l'effet
+        this.sky2.tilePositionX=this.cameras.main.scrollX*0.6;//*0.3+500;
+        this.sky2.tilePositionY=this.cameras.main.scrollY+24;//*0.1;
+        
+        //le troisième plan se déplace moins vite pour accentuer l'effet
+        this.sky.tilePositionX=this.cameras.main.scrollX*0.3;//0.15;
+        this.sky.tilePositionY=this.cameras.main.scrollY+24;//*0.05;
+        
 
     } // FIN DE UPDATE
 
