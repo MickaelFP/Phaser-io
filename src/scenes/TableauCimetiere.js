@@ -2,30 +2,38 @@ class TableauCimetiere extends Tableau{
 
     preload() 
     {
+
         super.preload();
+        //collectibles
         this.load.image('star', 'assets/star.png');
+        //plateformes
+        this.load.image('platformStone', 'assets/platformStone.png');
+        //monstres
         this.load.image('monster-zombie', 'assets/monster-zombie2.png');
         this.load.image('monster-araignee', 'assets/monster-araignee.png');
         this.load.image('monster-slime', 'assets/monster-slime.png');
         this.load.image('monster-fly', 'assets/monster-fly.png');
         this.load.image('monster-loupgarou', 'assets/monster-loupgarou.png');
-
+        //decors
         this.load.image('nuitEtoile', 'assets/nuitEtoile.png');
         this.load.image('sol', 'assets/sol_4000.png');
-        this.load.image('platformStone', 'assets/platformStone.png');
         this.load.image('tombes', 'assets/tombes.png');
-        //this.load.image('cimetiereBackground', 'assets/CimetiereBackground.png');
-        //this.load.image('tombes', 'assets/tombes.png');
         this.load.image('barriere', 'assets/grilleCiel.png');
-        this.load.image('blood', 'assets/bloodblack.png');
         //this.load.image('barriere', 'assets/barriere.png'); / image corrompue, barriere sans fond impossible !!!
-
-        //this.load.image('monster-fly2', 'assets/monster-fly2.png');
+        //animation de mort
+        this.load.image('blood', 'assets/bloodblack.png');
+        //son
+        this.load.audio('AmbianceHalloween1', 'assets/Sound/Ambiance_halloween_1.mp3');
 
     } // FIN DE PRELOAD
+
     create() 
     {
         super.create();
+
+        //on appel le(s) son(s)
+        this.Halloween1 = this.sound.add('AmbianceHalloween1');
+        this.Halloween1.play();
 
         //on définit la taille du tableau
         /*pour un défilement uniquement horizontale on définie une hauteur identique au cadre du jeu.
@@ -156,7 +164,7 @@ class TableauCimetiere extends Tableau{
 
         //quelques monstres 
         new MonsterLoupgarou(this,2000,448-hauteurSol);
-         
+
         let limitSpawnMonster=300;
         let largeurSizeSlime=50;
         this.monstre=this.physics.add.group();
