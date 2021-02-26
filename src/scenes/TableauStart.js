@@ -8,8 +8,10 @@ class TableauStart extends Tableau{
         this.load.image('monster-slime', 'assets/monster-slime.png');
         this.load.image('monster-fly', 'assets/monster-fly.png');
         this.load.image('monster-loupgarou', 'assets/monster-loupgarou.png');
-        this.load.image('cimetiereBackground', 'assets/CimetiereBackground.png');
+        this.load.image('spawn', 'assets/SpawnBackground.png');
         this.load.image('sol', 'assets/sol.png');
+        //this.load.image('blood', 'assets/bloodblack.png');
+        this.load.image('blood', 'assets/bloodtest.png');
 
         //this.load.image('monster-fly2', 'assets/monster-fly2.png');
 
@@ -47,7 +49,7 @@ class TableauStart extends Tableau{
             0,
             this.sys.canvas.width,
             this.sys.canvas.height,
-            'cimetiereBackground'
+            'spawn'
         );
         this.sky.setOrigin(0,0);
 

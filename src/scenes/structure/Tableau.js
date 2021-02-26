@@ -15,12 +15,12 @@ class Tableau extends Phaser.Scene{
      * Par défaut on charge un fond et le player
      */
     preload(){
-        this.load.image('sky', 'assets/sky.png');
+        this.load.image('sky', 'assets/skyNuit.png');
         this.load.image('spike', 'assets/spike.png');
         this.load.image('blood', 'assets/bloodblack.png');
         this.load.spritesheet('player',
             'assets/player.png',
-            { frameWidth: 32, frameHeight: 48  }  //default(32,48);requiered(30,65)
+            { frameWidth: 32, frameHeight: 48  }  //default(32,48)
         );
     }
     create(){

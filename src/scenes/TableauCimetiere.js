@@ -28,18 +28,36 @@ class TableauCimetiere extends Tableau{
         super.create();
 
         //on définit la taille du tableau
+        /*pour un défilement uniquement horizontale on définie une hauteur identique au cadre du jeu.
+        Inversement pour un défilement verticale, on définie une largeur identique au cadre du jeu*/
         let largeurDuTableau=4000;
-        let hauteurDuTableau=448; //la hauteur est identique au cadre du jeu
+        let hauteurDuTableau=448;
+        let largeur=896;
+        let hauteurSol=64;
         this.cameras.main.setBounds(0, 0, largeurDuTableau, hauteurDuTableau);
         this.physics.world.setBounds(0, 0, largeurDuTableau,  hauteurDuTableau);
         
         this.cameras.main.startFollow(this.player, false, 0.05, 0.05);
 
-        
         //quelques étoiles
-        let largeur=128;
         this.stars=this.physics.add.group();
-        for(let posX=largeur/2;posX<largeur*32;posX+=largeur)
+        for(let posX=661;posX<largeurDuTableau;posX+=largeur)
+        {
+            this.stars.create(posX ,0,"star");
+        }
+        for(let posX=135;posX<largeurDuTableau;posX+=largeur)
+        {
+            this.stars.create(posX ,0,"star");
+        }
+        for(let posX=386;posX<largeurDuTableau;posX+=largeur)
+        {
+            this.stars.create(posX ,0,"star");
+        }
+        for(let posX=135+(386-135)/2;posX<largeurDuTableau;posX+=largeur)
+        {
+            this.stars.create(posX ,0,"star");
+        }
+        for(let posX=386+(661-386)/2;posX<largeurDuTableau;posX+=largeur)
         {
             this.stars.create(posX ,0,"star");
         }
@@ -52,18 +70,7 @@ class TableauCimetiere extends Tableau{
             child.setMaxVelocity(0,500);
         });
         this.physics.add.overlap(this.player, this.stars, this.ramasserEtoile, null, this);
-        
-        /* CREER DES PLATFORMES
-        //des plateformes
-        this.platforms = this.physics.add.staticGroup();
-        this.platforms.create(400, 568, 'platformStone').setScale(2).refreshBody();
-        this.platforms.create(600, 400, 'platformStone');
-        this.platforms.create(50, 250, 'platformStone');
-        this.physics.add.collider(this.player, this.platforms);
-        
-        //les étoiles rebondissent sur les plateformes
-        this.physics.add.collider(this.platforms, this.stars);
-        */
+        // FIN DE QUELQUES ETOILES
 
         //quelques plateformes
         this.platforms=this.physics.add.staticGroup();
@@ -73,37 +80,32 @@ class TableauCimetiere extends Tableau{
             plate.setDisplaySize(115,7);
             plate.refreshBody();
         }
+        for(let posX=135;posX<largeurDuTableau;posX+=896){
+            let platY=295;
+            let plat=this.platforms.create(posX ,platY,"platformStone");
+            plat.setDisplaySize(115,7);
+            plat.refreshBody();
+        }
+        for(let posX=386;posX<largeurDuTableau;posX+=896){
+            let plaY=188;
+            let pla=this.platforms.create(posX ,plaY,"platformStone");
+            pla.setDisplaySize(203,11);
+            pla.refreshBody();
+        }
+        // FIN DE QUELQUES PLATEFORMES
         
         //this.physics.add.collider(this.player,this.platforms);
         this.physics.add.collider(this.player,this.platforms);
         this.physics.add.collider(this.stars, this.platforms);
 
-        /* CREER DES PLATFORMES ET DES ETOILES
-        //quelques étoiles et plateformes qui vont avec
-        this.stars=this.physics.add.group();
-        this.platforms=this.physics.add.staticGroup();
-        for(let posX=20;posX<largeurDuTableau;posX+=100){
-            let etoileY=350+Math.sin(posX)*100;
-            let star=this.stars.create(posX ,etoileY,"star");
-            star.body.allowGravity=false;
-            let plate=this.platforms.create(posX ,etoileY+50,"ground");
-            plate.setDisplaySize(60,10);
-            plate.refreshBody();
-        }
-        this.physics.add.overlap(this.player, this.stars, this.ramasserEtoile, null, this);
-        this.physics.add.collider(this.player,this.platforms);
-        */
-        
-
         //création du sol
-        let rouge=this.physics.add.sprite(0,height-64,"sol");
-        rouge.setDisplaySize(largeurDuTableau,64)//taille de l'objet
+        let rouge=this.physics.add.sprite(0,height-hauteurSol,"sol");
+        rouge.setDisplaySize(largeurDuTableau,hauteurSol)//taille de l'objet
         rouge.setOrigin(0,0);//pour positionner plus facilement
         rouge.body.allowGravity=0; //la gravité n'a pas d'effet ici
         rouge.setImmovable(true); //ne bouge pas quand on rentre dedans
         this.physics.add.collider(this.player, rouge);//le joueur rebondit dessus
         this.physics.add.collider(this.stars, rouge);//les étoiles rebondissent dessus
-
 
         //on change de ciel, on fait une tileSprite ce qui permet d'avoir une image qui se répète
         this.sky=this.add.tileSprite
@@ -130,7 +132,7 @@ class TableauCimetiere extends Tableau{
         );
         this.sky2.setScrollFactor(0);
         this.sky2.setOrigin(0,0);
-        this.sky2.alpha=0.2;
+        this.sky2.alpha=0.2; // opacité
         //this.sky2.tileScaleX=this.sky.tileScaleY=0.8;
         
         //on ajoute une troixième couche/plan
@@ -150,17 +152,41 @@ class TableauCimetiere extends Tableau{
         //this.sky3.alpha=0.8;
         
 
+
+
+        //quelques monstres 
+        new MonsterLoupgarou(this,2000,448-hauteurSol);
+         
+        let limitSpawnMonster=300;
+        let largeurSizeSlime=50;
+        this.monstre=this.physics.add.group();
+        for(let posX=386;posX<largeurDuTableau-limitSpawnMonster;posX+=largeur)
+        {
+            new MonsterFly(this,posX,100,"monster-fly");
+        }
+        for(let posX=386;posX<largeurDuTableau-limitSpawnMonster;posX+=largeur)
+        {
+            new MonsterZombie(this,posX,408-hauteurSol,"monster-zombie");
+        }
+        for(let posX=661+115+largeurSizeSlime;posX<largeurDuTableau-limitSpawnMonster;posX+=largeur)
+        {
+            new MonsterSlime(this,posX,height-hauteurSol-18,"monster-slime");
+        }
+        for(let posX=448;posX<largeurDuTableau-limitSpawnMonster;posX+=largeur)
+        {
+            this.MonsterAraignee = new MonsterAraignee(this,posX,height-140-hauteurSol,"monster-araignee");
+            this.MonsterAraignee.setDepth(11)
+        }
+        // FIN DE QUELQUES MONSTRES
+
         //fait passer les éléments devant le ciel
         this.platforms.setDepth(10)
         this.stars.setDepth(10)
         this.player.setDepth(10)
         rouge.setDepth(10);
-
-        new MonsterFly(this,400,100);
-        new MonsterZombie(this,448,408-64);
-        new MonsterLoupgarou(this,2000,448-64);
-        new MonsterAraignee(this,448,height-140-64);
-        new MonsterSlime(this,600,height-64-18);
+        
+            
+        //this.physics.add.overlap(this.player, this.monstre, this.hitSpike, this.saigne, this.hitMonster, this , null, this);
 
     } // FIN DE CREATE
 

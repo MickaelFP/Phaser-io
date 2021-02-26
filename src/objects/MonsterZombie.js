@@ -19,8 +19,8 @@ class MonsterZombie extends ObjetEnnemi{
 
         // X
         this.originalX=x;
-        this.minX=x-300;
-        this.maxX=x+400;
+        this.minX=x-((386-135)-(115/2));
+        this.maxX=x+(661-386-(115/2));
         
         // Y
         this.originalY=y;
@@ -60,7 +60,7 @@ class MonsterZombie extends ObjetEnnemi{
             {
                 from: this.minX,
                 to:this.maxX,
-                duration: 10*2000,
+                duration: 10*500,
                 ease: 'Sine.easeInOut',
                 yoyo: -1,
                 repeat:-1,
