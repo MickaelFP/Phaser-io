@@ -1,35 +1,8 @@
+### Attention ! Le jeu peut mettre quelques secondes (2 à 10 secondes) pour s'afficher, probablement à cause de l'ajout de la musique.
+
 https://mickaelfp.github.io/Platformer/
 
 http://localhost/platformer/
-
-# On va travailler sur un Platformer
-
-
-
-
-
-
-## 2021/01/04
-
-Pour ce premier cours on attaque avec la partie la plus fastidieuse...désolé :grimacing:
-
-- [Phaser](https://phaser.io/) **3** (j'insiste sur le 3) c'est quoi?
-- Canvas & WEBGL c'est quoi?
-- [Installation de Phaser](https://phaser.io/tutorials/getting-started-phaser3)
-- Localhost c'est quoi?
-- Installation d'un serveur web local [XAMPP](https://www.apachefriends.org/fr/index.html)
-- hello world!
-- Essayons de modifier le code pour voir comment ça réagit
-- Regardons un peu [la doc du framework](https://photonstorm.github.io/phaser3-docs/)...
-- Essayons quelques [exemples](https://phaser.io/examples)
-
-## 2021/01/11
-
-On rentre dans le vif du sujet, on attaque notre platfomer.
-
-Dans ce repo vous avez une structure de projet qui fonctionne et que vous pouvez conserver et améliorerer bien entendu.
-Le jeu est visible sur https://davidmarsprof.github.io/platformer. Vous noterez le petit pad qui permet de jouer sur mobile.
-Ce pad n'est pas par défaut dans Phaser, c'est un petit bout de code que j'ai ajouté, on y reviendra (ou pas).
 
 ### Structure du projet
 
@@ -75,18 +48,3 @@ C'est ici que se trouvent les différentes scènes de votre jeu: Tableau00, Tabl
 #### Le répertoire `src/objects`
 
 C'est ici qu'on met les classes des monstres, des pateformes, des décors etc... 
-
-
-### Étude des tableaux 00 à 04
-
-On va apprendre à :
-
-- rajouter une scène (un tableau)
-- jouer avec la gravité 
-- positionner des éléments
-- gérer nos premières collisions.
-  
-
-
-
-
