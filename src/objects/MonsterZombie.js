@@ -60,7 +60,7 @@ class MonsterZombie extends ObjetEnnemi{
             {
                 from: this.minX,
                 to:this.maxX,
-                duration: 10*500,
+                duration: 10*1500,
                 ease: 'Sine.easeInOut',
                 yoyo: -1,
                 repeat:-1,
