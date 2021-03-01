@@ -192,6 +192,7 @@ class TableauCimetiere extends Tableau{
         this.stars.setDepth(10)
         this.player.setDepth(10)
         rouge.setDepth(10);
+        this.blood.setDepth(10)
         
             
         //this.physics.add.overlap(this.player, this.monstre, this.hitSpike, this.saigne, this.hitMonster, this , null, this);
