@@ -18,7 +18,7 @@ class Tableau extends Phaser.Scene{
         this.load.image('sky', 'assets/skyNuit.png');
         this.load.image('spike', 'assets/spike.png');
         this.load.image('blood', 'assets/bloodblack.png');
-        this.load.audio('os', 'assets/Sound/os_sound.mp3'); /*crack */
+        this.load.audio('os', 'assets/Sound/os_sound.mp3');
         this.load.audio('splash', 'assets/Sound/splash.mp3');
         this.load.audio('crack', 'assets/Sound/crack.mp3');
         this.load.spritesheet('player',
