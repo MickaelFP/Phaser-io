@@ -18,6 +18,7 @@ class Tableau extends Phaser.Scene{
         this.load.image('sky', 'assets/skyNuit.png');
         this.load.image('spike', 'assets/spike.png');
         this.load.image('blood', 'assets/bloodblack.png');
+        this.load.audio('os', 'assets/Sound/os_sound.mp3');
         this.load.spritesheet('player',
             'assets/player.png',
             { frameWidth: 32, frameHeight: 48  }  //default(32,48)
@@ -89,6 +90,18 @@ class Tableau extends Phaser.Scene{
     {
         star.disableBody(true, true);
         ui.gagne();
+        this.music = this.sound.add('os');
+
+        var musicConfig = {
+            mute: false,
+            volume: 0.1,
+            rate : 1,
+            detune: 0,
+            seek: 0,
+            loop: false,
+            delay:0,
+        }
+        this.music.play(musicConfig);
 
         //va lister tous les objets de la scène pour trouver les étoies et vérifier si elles sont actives
         let totalActive=0;
