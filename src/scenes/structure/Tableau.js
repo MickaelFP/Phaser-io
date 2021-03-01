@@ -18,7 +18,9 @@ class Tableau extends Phaser.Scene{
         this.load.image('sky', 'assets/skyNuit.png');
         this.load.image('spike', 'assets/spike.png');
         this.load.image('blood', 'assets/bloodblack.png');
-        this.load.audio('os', 'assets/Sound/os_sound.mp3');
+        this.load.audio('os', 'assets/Sound/os_sound.mp3'); /*crack */
+        this.load.audio('splash', 'assets/Sound/splash.mp3');
+        this.load.audio('crack', 'assets/Sound/crack.mp3');
         this.load.spritesheet('player',
             'assets/player.png',
             { frameWidth: 32, frameHeight: 48  }  //default(32,48)
@@ -41,17 +43,14 @@ class Tableau extends Phaser.Scene{
          */
         this.player=new Player(this,0,0);
         
-
-
         this.blood=this.add.sprite(this.sys.canvas.width/2,this.sys.canvas.height/2,"blood")
         this.blood.displayWidth=64;
         this.blood.displayHeight=64;
         this.blood.visible=false;
 
-
-
     }
-    update(){
+    update()
+    {
         super.update();
         this.player.move();
     }
@@ -62,24 +61,29 @@ class Tableau extends Phaser.Scene{
      * @param {Sprite} object Objet qui saigne
      * @param {function} onComplete Fonction à appeler quand l'anim est finie
      */
-    saigne(object,onComplete){
+    saigne(object,onComplete)
+    {
         let me=this;
         me.blood.visible=true;
         me.blood.rotation = Phaser.Math.Between(0,6);
         me.blood.x=object.x;
         me.blood.y=object.y;
-        me.tweens.add({
+        me.tweens.add(
+            {
             targets:me.blood,
             duration:200,
-            displayHeight:{
+            displayHeight:
+            {
                 from:40,
                 to:70,
             },
-            displayWidth:{
+            displayWidth:
+            {
                 from:40,
                 to:70,
             },
-            onComplete: function () {
+            onComplete: function () 
+            {
                 me.blood.visible=false;
                 onComplete();
             }
@@ -92,9 +96,10 @@ class Tableau extends Phaser.Scene{
         ui.gagne();
         this.music = this.sound.add('os');
 
-        var musicConfig = {
+        var musicConfig = 
+        {
             mute: false,
-            volume: 0.1,
+            volume: 0.3,
             rate : 1,
             detune: 0,
             seek: 0,
@@ -105,14 +110,16 @@ class Tableau extends Phaser.Scene{
 
         //va lister tous les objets de la scène pour trouver les étoies et vérifier si elles sont actives
         let totalActive=0;
-        for(let child of this.children.getChildren()){
+        for(let child of this.children.getChildren())
+        {
             if(child.texture && child.texture.key==="star"){
                 if(child.active){
                     totalActive++;
                 }
             }
         }
-        if(totalActive===0){
+        if(totalActive===0)
+        {
             this.win();
         }
         /*
@@ -147,9 +154,11 @@ class Tableau extends Phaser.Scene{
      * @param {Player} player
      * @param {Phaser.Physics.Arcade.Sprite} monster
      */
-    hitMonster(player, monster){
+    hitMonster(player, monster)
+    {
         let me=this;
-        if(monster.isDead !== true){ //si notre monstre n'est pas déjà mort
+        if(monster.isDead !== true)
+        { //si notre monstre n'est pas déjà mort
             if(
                 // si le player descend
                 player.body.velocity.y > 0
@@ -160,24 +169,53 @@ class Tableau extends Phaser.Scene{
                 ui.gagne();
                 monster.isDead=true; //ok le monstre est mort
                 monster.visible=false;
-                this.saigne(monster,function(){
+                this.saigne(monster,function()
+                {
                     //à la fin de la petite anim...ben il se passe rien :)
                 })
+                this.music = this.sound.add('splash');
+
+                var musicConfig = 
+                {
+                    mute: false,
+                    volume: 0.3,
+                    rate : 1,
+                    detune: 0,
+                    seek: 0,
+                    loop: false,
+                    delay:0,
+                }
+                this.music.play(musicConfig);
                 //notre joueur rebondit sur le monstre
                 player.directionY=500;
             }else{
                 //le joueur est mort
-                if(!me.player.isDead){
+                if(!me.player.isDead)
+                {
                     me.player.isDead=true;
                     me.player.visible=false;
                     //ça saigne...
-                    me.saigne(me.player,function(){
+                    me.saigne(me.player,function()
+                    {
                         //à la fin de la petite anim, on relance le jeu
                         me.blood.visible=false;
                         me.player.anims.play('turn');
                         me.player.isDead=false;
                         me.scene.restart();
                     })
+                    this.music = this.sound.add('crack');
+
+                    var musicConfig = 
+                    {
+                        mute: false,
+                        volume: 0.3,
+                        rate : 1,
+                        detune: 0,
+                        seek: 0,
+                        loop: false,
+                        delay:0,
+                    }
+                    this.music.play(musicConfig);
                 }
             }
         }

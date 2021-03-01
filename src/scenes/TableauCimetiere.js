@@ -15,10 +15,11 @@ class TableauCimetiere extends Tableau{
         this.load.image('monster-fly', 'assets/monster-fly.png');
         this.load.image('monster-loupgarou', 'assets/monster-loupgarou.png');
         //decors
-        this.load.image('nuitEtoile', 'assets/nuitEtoile.png');
+        this.load.image('nuitEtoile', 'assets/sky_nuit2.png');
         this.load.image('sol', 'assets/sol_4000.png');
+        this.load.image('solFond', 'assets/Sol_fond.png');
         this.load.image('tombes', 'assets/tombes.png');
-        this.load.image('barriere', 'assets/grilleCiel.png');
+        this.load.image('barriere', 'assets/grilleCiel2.png');
         //this.load.image('barriere', 'assets/barriere.png'); / image corrompue, barriere sans fond impossible !!!
         //animation de mort
         this.load.image('blood', 'assets/bloodblack.png');
@@ -107,7 +108,7 @@ class TableauCimetiere extends Tableau{
         this.physics.add.collider(this.stars, this.platforms);
 
         //création du sol
-        let rouge=this.physics.add.sprite(0,height-hauteurSol,"sol");
+        let rouge=this.physics.add.sprite(0,height-hauteurSol);//,"sol");
         rouge.setDisplaySize(largeurDuTableau,hauteurSol)//taille de l'objet
         rouge.setOrigin(0,0);//pour positionner plus facilement
         rouge.body.allowGravity=0; //la gravité n'a pas d'effet ici
@@ -158,9 +159,18 @@ class TableauCimetiere extends Tableau{
         this.sky3.setScrollFactor(0);
         this.sky3.setOrigin(0,0);
         //this.sky3.alpha=0.8;
-        
 
-
+        //sol
+        this.sky4=this.add.tileSprite
+        (
+            0,
+            0,
+            this.sys.canvas.width,
+            this.sys.canvas.height,
+            'solFond'
+        );
+        this.sky4.setScrollFactor(0);
+        this.sky4.setOrigin(0,0);
 
         //quelques monstres 
         new MonsterLoupgarou(this,2000,448-hauteurSol);
@@ -212,6 +222,9 @@ class TableauCimetiere extends Tableau{
         //le troisième plan se déplace moins vite pour accentuer l'effet
         this.sky.tilePositionX=this.cameras.main.scrollX*0.3;//0.15;
         this.sky.tilePositionY=this.cameras.main.scrollY+24;//*0.05;
+        //le sol
+        this.sky4.tilePositionX=this.cameras.main.scrollX*0.6;//0.15;
+        this.sky4.tilePositionY=this.cameras.main.scrollY;//*0.05;
         
 
     } // FIN DE UPDATE
