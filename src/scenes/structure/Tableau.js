@@ -96,7 +96,7 @@ class Tableau extends Phaser.Scene{
         })
     } // FIN DE SAIGNE
 
-    // on définit une animation de destruction de monstre
+    // on définit une animation de destruction du joueur
     /**
      *
      * @param {Sprite} object Objet qui saigne
@@ -129,7 +129,7 @@ class Tableau extends Phaser.Scene{
                 onComplete();
             }
         })
-    } // FIN DE SAIGNE
+    } // FIN DE SAIGNEPLAYER
 
     ramasserEtoile (player, star)
     {

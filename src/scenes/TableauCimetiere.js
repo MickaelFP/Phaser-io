@@ -26,7 +26,8 @@ class TableauCimetiere extends Tableau{
         this.load.image('osExplosion', 'assets/persoMort.png');
         //son
         this.load.audio('AmbianceHalloween1', 'assets/Sound/Ambiance_halloween_1.mp3');
-
+        //gifs
+        this.load.gif('corbeau', 'assets/animations/animationCorbeau2.gif');
     } // FIN DE PRELOAD
 
     create() 
@@ -214,14 +215,14 @@ class TableauCimetiere extends Tableau{
     update()
     {
         super.update();
-        //le ciel se déplace moins vite que la caméra pour donner un effet paralax
-        this.sky3.tilePositionX=this.cameras.main.scrollX;//*0.6;
+        //les tombes
+        this.sky3.tilePositionX=this.cameras.main.scrollX*0.3;//*0.6;
         this.sky3.tilePositionY=this.cameras.main.scrollY+22;//*0.2;
-        ///le deuxième plan se déplace moins vite pour accentuer l'effet
+        ///le ciel
         this.sky2.tilePositionX=this.cameras.main.scrollX*0.6;//*0.3+500;
         this.sky2.tilePositionY=this.cameras.main.scrollY+24;//*0.1;
         
-        //le troisième plan se déplace moins vite pour accentuer l'effet
+        //la grille
         this.sky.tilePositionX=this.cameras.main.scrollX*0.3;//0.15;
         this.sky.tilePositionY=this.cameras.main.scrollY+24;//*0.05;
         //le sol
