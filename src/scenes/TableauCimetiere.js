@@ -23,6 +23,7 @@ class TableauCimetiere extends Tableau{
         //this.load.image('barriere', 'assets/barriere.png'); / image corrompue, barriere sans fond impossible !!!
         //animation de mort
         this.load.image('blood', 'assets/bloodblack.png');
+        this.load.image('osExplosion', 'assets/persoMort.png');
         //son
         this.load.audio('AmbianceHalloween1', 'assets/Sound/Ambiance_halloween_1.mp3');
 
@@ -203,6 +204,7 @@ class TableauCimetiere extends Tableau{
         this.player.setDepth(10)
         rouge.setDepth(10);
         this.blood.setDepth(10)
+        this.blood2.setDepth(10)
         
             
         //this.physics.add.overlap(this.player, this.monstre, this.hitSpike, this.saigne, this.hitMonster, this , null, this);

@@ -18,6 +18,7 @@ class Tableau extends Phaser.Scene{
         this.load.image('sky', 'assets/skyNuit.png');
         this.load.image('spike', 'assets/spike.png');
         this.load.image('blood', 'assets/bloodblack.png');
+        this.load.image('osExplosion', 'assets/persoMort.png');
         this.load.audio('os', 'assets/Sound/os_sound.mp3');
         this.load.audio('splash', 'assets/Sound/splash.mp3');
         this.load.audio('crack', 'assets/Sound/crack.mp3');
@@ -47,6 +48,11 @@ class Tableau extends Phaser.Scene{
         this.blood.displayWidth=64;
         this.blood.displayHeight=64;
         this.blood.visible=false;
+
+        this.blood2=this.add.sprite(this.sys.canvas.width/2,this.sys.canvas.height/2,"osExplosion")
+        this.blood2.displayWidth=64;
+        this.blood2.displayHeight=64;
+        this.blood2.visible=false;
 
     }
     update()
@@ -85,6 +91,41 @@ class Tableau extends Phaser.Scene{
             onComplete: function () 
             {
                 me.blood.visible=false;
+                onComplete();
+            }
+        })
+    } // FIN DE SAIGNE
+
+    // on définit une animation de destruction de monstre
+    /**
+     *
+     * @param {Sprite} object Objet qui saigne
+     * @param {function} onComplete Fonction à appeler quand l'anim est finie
+     */
+    saignePlayer(object,onComplete)
+    {
+        let me=this;
+        me.blood2.visible=true;
+        me.blood2.rotation = Phaser.Math.Between(0,6);
+        me.blood2.x=object.x;
+        me.blood2.y=object.y;
+        me.tweens.add(
+            {
+            targets:me.blood2,
+            duration:200,
+            displayHeight:
+            {
+                from:40,
+                to:70,
+            },
+            displayWidth:
+            {
+                from:40,
+                to:70,
+            },
+            onComplete: function () 
+            {
+                me.blood2.visible=false;
                 onComplete();
             }
         })
@@ -195,10 +236,10 @@ class Tableau extends Phaser.Scene{
                     me.player.isDead=true;
                     me.player.visible=false;
                     //ça saigne...
-                    me.saigne(me.player,function()
+                    me.saignePlayer(me.player,function()
                     {
                         //à la fin de la petite anim, on relance le jeu
-                        me.blood.visible=false;
+                        me.blood2.visible=false;
                         me.player.anims.play('turn');
                         me.player.isDead=false;
                         me.scene.restart();
