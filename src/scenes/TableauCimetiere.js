@@ -4,6 +4,7 @@ class TableauCimetiere extends Tableau{
     {
 
         super.preload();
+        //// IMAGES ////
         //collectibles
         this.load.image('star', 'assets/star.png');
         //plateformes
@@ -17,17 +18,23 @@ class TableauCimetiere extends Tableau{
         //decors
         this.load.image('nuitEtoile', 'assets/sky_nuit2.png');
         this.load.image('sol', 'assets/sol_4000.png');
-        this.load.image('solFond', 'assets/Sol_fond.png');
-        this.load.image('tombes', 'assets/tombes.png');
-        this.load.image('barriere', 'assets/grilleCiel2.png');
-        //this.load.image('barriere', 'assets/barriere.png'); / image corrompue, barriere sans fond impossible !!!
-        //animation de mort
+        this.load.image('solFond2', 'assets/Sol_fond2.png');
+        this.load.image('tombes', 'assets/tombes2.png');
+        this.load.image('grilleHerbe', 'assets/grilleHerbe.png');
+        this.load.image('colines', 'assets/colines.png');
+        this.load.image('ombresTombes', 'assets/ombresTombes.png');
+        this.load.image('chateauLoin', 'assets/chateauLoin.png');
+        this.load.image('chateauCiel', 'assets/CielChateau.png');
+        this.load.image('tombesGrille', 'assets/tombes_grille.png');
+        //animations de mort
         this.load.image('blood', 'assets/bloodblack.png');
         this.load.image('osExplosion', 'assets/persoMort.png');
-        //son
+        //// SONS ////
         this.load.audio('AmbianceHalloween1', 'assets/Sound/Ambiance_halloween_1.mp3');
-        //gifs
-        this.load.gif('corbeau', 'assets/animations/animationCorbeau2.gif');
+        //// GIFS ////
+        //this.load.gif('corbeau', 'assets/animations/animationCorbeau2.gif');
+        //this.load.spritesheet('crawler', 'assets/crawler.png', { frameWidth: 32, frameHeight: 16 } );
+
     } // FIN DE PRELOAD
 
     create() 
@@ -45,6 +52,7 @@ class TableauCimetiere extends Tableau{
         let hauteurDuTableau=448;
         let largeur=896;
         let hauteurSol=64;
+        let randomVariable1 = Phaser.Math.Between(100, 400);
         this.cameras.main.setBounds(0, 0, largeurDuTableau, hauteurDuTableau);
         this.physics.world.setBounds(0, 0, largeurDuTableau,  hauteurDuTableau);
         
@@ -103,11 +111,10 @@ class TableauCimetiere extends Tableau{
             pla.setDisplaySize(203,11);
             pla.refreshBody();
         }
-        // FIN DE QUELQUES PLATEFORMES
-        
-        //this.physics.add.collider(this.player,this.platforms);
+        // on active leurs colisions avec les éléments que l'on souhaite
         this.physics.add.collider(this.player,this.platforms);
         this.physics.add.collider(this.stars, this.platforms);
+        // FIN DE QUELQUES PLATEFORMES        
 
         //création du sol
         let rouge=this.physics.add.sprite(0,height-hauteurSol);//,"sol");
@@ -125,14 +132,13 @@ class TableauCimetiere extends Tableau{
             0,
             this.sys.canvas.width,
             this.sys.canvas.height,
-            'barriere'
+            'nuitEtoile'
         );
         this.sky.setOrigin(0,0);
-        this.sky.setScrollFactor(0);//fait en sorte que le ciel ne suive pas la caméra
-        //this.sky.alpha=0.3;
+        this.sky.setScrollFactor(0); //fait en sorte que le ciel ne suive pas la caméra
+        //this.sky.alpha=0.5; // opacité
+        //this.sky2.tileScaleX=this.sky.tileScaleY=0.8;
 
-        
-        //on ajoute une deuxième couche/plan
         this.sky2=this.add.tileSprite
         (
             0,
@@ -141,16 +147,44 @@ class TableauCimetiere extends Tableau{
             this.sys.canvas.height,
             'nuitEtoile'
         );
-        this.sky2.setScrollFactor(0);
         this.sky2.setOrigin(0,0);
-        this.sky2.alpha=0.2; // opacité
-        //this.sky2.tileScaleX=this.sky.tileScaleY=0.8;
-        
-        //on ajoute une troixième couche/plan
-        
-        
-        //on ajoute une deuxième couche de ciel
+        this.sky2.setScrollFactor(0);
+        this.sky2.alpha=0.1; 
+
         this.sky3=this.add.tileSprite
+        (
+            0,
+            0,
+            this.sys.canvas.width,
+            this.sys.canvas.height,
+            'chateauLoin'
+        );
+        this.sky3.setScrollFactor(0);
+        this.sky3.setOrigin(0,0);
+        
+        this.sky4=this.add.tileSprite
+        (
+            0,
+            0,
+            this.sys.canvas.width,
+            this.sys.canvas.height,
+            'colines'
+        );
+        this.sky4.setScrollFactor(0);
+        this.sky4.setOrigin(0,0);
+        
+        this.sky5=this.add.tileSprite
+        (
+            0,
+            0,
+            this.sys.canvas.width,
+            this.sys.canvas.height,
+            'grilleHerbe'
+        );
+        this.sky5.setScrollFactor(0);
+        this.sky5.setOrigin(0,0);
+        
+        this.sky6=this.add.tileSprite
         (
             0,
             0,
@@ -158,24 +192,35 @@ class TableauCimetiere extends Tableau{
             this.sys.canvas.height,
             'tombes'
         );
-        this.sky3.setScrollFactor(0);
-        this.sky3.setOrigin(0,0);
-        //this.sky3.alpha=0.8;
-
-        //sol
-        this.sky4=this.add.tileSprite
+        this.sky6.setScrollFactor(0);
+        this.sky6.setOrigin(0,0);
+       
+        this.sky7=this.add.tileSprite
         (
             0,
             0,
             this.sys.canvas.width,
             this.sys.canvas.height,
-            'solFond'
+            'solFond2'
         );
-        this.sky4.setScrollFactor(0);
-        this.sky4.setOrigin(0,0);
+        this.sky7.setScrollFactor(0);
+        this.sky7.setOrigin(0,0);
+        
+        this.sky8=this.add.tileSprite
+        (
+            0,
+            0,
+            this.sys.canvas.width,
+            this.sys.canvas.height,
+            'ombresTombes'
+        );
+        this.sky8.setScrollFactor(0);
+        this.sky8.setOrigin(0,0);  
+
+        //this.corbeauxGif = new CorbeauxGif(this,400,550,'monster_zombie');
 
         //quelques monstres 
-        new MonsterLoupgarou(this,2000,448-hauteurSol);
+        //new MonsterLoupgarou(this,2000,448-hauteurSol);
 
         let limitSpawnMonster=300;
         let largeurSizeSlime=50;
@@ -188,24 +233,30 @@ class TableauCimetiere extends Tableau{
         {
             new MonsterZombie(this,posX,408-hauteurSol,"monster-zombie");
         }
-        for(let posX=661+115+largeurSizeSlime;posX<largeurDuTableau-limitSpawnMonster;posX+=largeur)
-        {
-            new MonsterSlime(this,posX,height-hauteurSol-18,"monster-slime");
-        }
-        for(let posX=448;posX<largeurDuTableau-limitSpawnMonster;posX+=largeur)
-        {
-            this.MonsterAraignee = new MonsterAraignee(this,posX,height-140-hauteurSol,"monster-araignee");
-            this.MonsterAraignee.setDepth(11)
-        }
         // FIN DE QUELQUES MONSTRES
+
+        /*
+        //// QUELQUES GIFS ////
+        //this.gifs=this.physics.add.group();
+        //let randomVariable1 = Phaser.Math.Between(100, 400);
+        //corbeaux
+        for(let posX=400+randomVariable1;posX<largeurDuTableau;posX+=400+randomVariable1)
+        {
+            this.CorbeauxGif = new CorbeauxGif(this,posX,295,"monster_zombie");
+            this.CorbeauxGif.setDepth(12)
+        }
+
+        //// FIN DE QUELQUES GIFS ////
+        */
 
         //fait passer les éléments devant le ciel
         this.platforms.setDepth(10)
         this.stars.setDepth(10)
         this.player.setDepth(10)
-        rouge.setDepth(10);
+        rouge.setDepth(10)
         this.blood.setDepth(10)
         this.blood2.setDepth(10)
+        this.sky8.setDepth(12)
         
             
         //this.physics.add.overlap(this.player, this.monstre, this.hitSpike, this.saigne, this.hitMonster, this , null, this);
@@ -215,19 +266,44 @@ class TableauCimetiere extends Tableau{
     update()
     {
         super.update();
-        //les tombes
-        this.sky3.tilePositionX=this.cameras.main.scrollX*0.3;//*0.6;
-        this.sky3.tilePositionY=this.cameras.main.scrollY+22;//*0.2;
-        ///le ciel
-        this.sky2.tilePositionX=this.cameras.main.scrollX*0.6;//*0.3+500;
-        this.sky2.tilePositionY=this.cameras.main.scrollY+24;//*0.1;
+
+        //le ciel et les étoiles
+        this.sky.tilePositionX=this.cameras.main.scrollX*0.02;//*0.3//0.15;
+        this.sky.tilePositionY=this.cameras.main.scrollY+22;//+24//*0.05;
+
+        //le ciel et les étoiles2
+        this.sky2.tilePositionX=this.cameras.main.scrollX*0;//*0.3//0.15;
+        this.sky2.tilePositionY=this.cameras.main.scrollY+22;//+24//*0.05;
         
-        //la grille
-        this.sky.tilePositionX=this.cameras.main.scrollX*0.3;//0.15;
-        this.sky.tilePositionY=this.cameras.main.scrollY+24;//*0.05;
+        
+        ///le chateau sur la coline
+        this.sky3.tilePositionX=this.cameras.main.scrollX*0.1;//*0.6//*0.3+500;
+        this.sky3.tilePositionY=this.cameras.main.scrollY+22;//+24//*0.1;
+        
+        
+        //les colines
+        this.sky4.tilePositionX=this.cameras.main.scrollX*0.6;//*0.3//*0.6;
+        this.sky4.tilePositionY=this.cameras.main.scrollY+22;//+22//*0.2;
+        
+        
+        //la grille avec herbes
+        this.sky5.tilePositionX=this.cameras.main.scrollX*0.8;//*0.6//0.15;
+        this.sky5.tilePositionY=this.cameras.main.scrollY+22;//+0//*0.05;
+        
+        
+        //les tombes
+        this.sky6.tilePositionX=this.cameras.main.scrollX;//*0.6//0.15;
+        this.sky6.tilePositionY=this.cameras.main.scrollY+22;//+0//*0.05;
+        
+        
         //le sol
-        this.sky4.tilePositionX=this.cameras.main.scrollX*0.6;//0.15;
-        this.sky4.tilePositionY=this.cameras.main.scrollY;//*0.05;
+        this.sky7.tilePositionX=this.cameras.main.scrollX*1.3;//*0.6//0.15;
+        this.sky7.tilePositionY=this.cameras.main.scrollY;//+0//*0.05;
+        
+        
+        //les ombres devant
+        this.sky8.tilePositionX=this.cameras.main.scrollX*1.6;//*0.6//0.15;
+        this.sky8.tilePositionY=this.cameras.main.scrollY;//+0//*0.05;
         
 
     } // FIN DE UPDATE

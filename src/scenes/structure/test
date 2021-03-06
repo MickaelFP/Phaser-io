@@ -1,4 +1,4 @@
-/*** CREER DES PLATFORMES ET DES COLLECTIBLES ***
+/***            CREER DES PLATFORMES ET DES COLLECTIBLES            ***
 
 this.stars=this.physics.add.group();
 this.platforms=this.physics.add.staticGroup();
@@ -13,9 +13,11 @@ for(let posX=20;posX<largeurDuTableau;posX+=100){
 this.physics.add.overlap(this.player, this.stars, this.ramasserEtoile, null, this);
 this.physics.add.collider(this.player,this.platforms);
 
-*** FIN DE CREER DES PLATEFORMES ET DES COLLECTIBLES ***/
 
-/*** CREER DES PLATFORMES ***
+
+
+
+/***            CREER DES PLATFORMES            ***
 
 *plateformes simples*
 this.platforms = this.physics.add.staticGroup();
@@ -39,9 +41,11 @@ this.physics.add.collider(this.stars, maison);//les étoiles rebondissent dessus
 this.setBodySize(this.body.width,10);
 maison.setDepth(10);
 
-*** FIN DE CREER DES PLATEFORMES ***/
 
-/*** CREER DES MONSTRES ***
+
+
+
+/***            CREER DES MONSTRES          ***
 
 *ecriture simple sans boucle*
 new MonsterFly(this,386,100);
@@ -51,4 +55,43 @@ new MonsterLoupgarou(this,2000,448-hauteurSol);
 //on défini "this.MonsterAraignee" pour pouvoir définir un "setDepth" de MonsterAraignee plus tard*
 this.MonsterAraignee = new MonsterAraignee(this,448,height-140-hauteurSol);
 
-*** FIN DE CEER DES MONSTRES ***/
+
+
+
+
+/***            CREER DES BOUCLES DE MONSTRES         ***
+
+*araignée*
+for(let posX=448;posX<largeurDuTableau-limitSpawnMonster;posX+=largeur)
+{
+    *on créait "this.monster" pour pouvoir passer la créature devant les plateformes avec "setDepth"*
+    this.MonsterAraignee = new MonsterAraignee(this,posX,height-140-hauteurSol,"monster-araignee");
+    this.MonsterAraignee.setDepth(11)
+}
+*slime*
+for(let posX=661+115+largeurSizeSlime;posX<largeurDuTableau-limitSpawnMonster;posX+=largeur)
+{
+    new MonsterSlime(this,posX,height-hauteurSol-18,"monster-slime");
+}
+
+
+
+
+
+/***            CREER DES GIFS          ***
+
+*fonctionne pas!*
+*corbeaux*
+this.gifs=this.physics.add.staticGroup();
+let randomVariable1 = Math.random();
+let randomVariable1 = Phaser.Math.Between(100, 400);
+for(let posX = 400 ;posX<largeurDuTableau;posX+=400){
+    let corbeauxY=295;
+    let corbeaux=this.gifs.create(posX ,corbeauxY,"corbeau");
+    corbeaux.setDisplaySize(556,hauteurDuTableau);
+    corbeaux.refreshBody();
+}
+
+
+
+

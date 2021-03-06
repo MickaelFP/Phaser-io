@@ -22,6 +22,7 @@ class Tableau extends Phaser.Scene{
         this.load.audio('os', 'assets/Sound/os_sound.mp3');
         this.load.audio('splash', 'assets/Sound/splash.mp3');
         this.load.audio('crack', 'assets/Sound/crack.mp3');
+        // this.load.spritesheet('corbeau', 'assets/annimations.png', { frameWidth: 32, frameHeight: 32 } );
         this.load.spritesheet('player',
             'assets/player.png',
             { frameWidth: 32, frameHeight: 48  }  //default(32,48)
@@ -52,7 +53,7 @@ class Tableau extends Phaser.Scene{
         this.blood2=this.add.sprite(this.sys.canvas.width/2,this.sys.canvas.height/2,"osExplosion")
         this.blood2.displayWidth=64;
         this.blood2.displayHeight=64;
-        this.blood2.visible=false;
+        this.blood2.visible=false
 
     }
     update()
