@@ -297,12 +297,12 @@ class TableauCimetiere extends Tableau{
         
         
         //le sol
-        this.sky7.tilePositionX=this.cameras.main.scrollX*1.3;//*0.6//0.15;
+        this.sky7.tilePositionX=this.cameras.main.scrollX*1.1;//*0.6//0.15;
         this.sky7.tilePositionY=this.cameras.main.scrollY;//+0//*0.05;
         
         
         //les ombres devant
-        this.sky8.tilePositionX=this.cameras.main.scrollX*1.6;//*0.6//0.15;
+        this.sky8.tilePositionX=this.cameras.main.scrollX*1.3;//*0.6//0.15;
         this.sky8.tilePositionY=this.cameras.main.scrollY;//+0//*0.05;
         
 
