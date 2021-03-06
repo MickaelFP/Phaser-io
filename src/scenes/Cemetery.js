@@ -1,4 +1,4 @@
-class TableauCimetiere extends Tableau{ 
+class Cemetery extends Tableau{ 
 
     preload() 
     {
@@ -29,11 +29,15 @@ class TableauCimetiere extends Tableau{
         //animations de mort
         this.load.image('blood', 'assets/bloodblack.png');
         this.load.image('osExplosion', 'assets/persoMort.png');
+
         //// SONS ////
         this.load.audio('AmbianceHalloween1', 'assets/Sound/Ambiance_halloween_1.mp3');
+
         //// GIFS ////
         //this.load.gif('corbeau', 'assets/animations/animationCorbeau2.gif');
-        //this.load.spritesheet('crawler', 'assets/crawler.png', { frameWidth: 32, frameHeight: 16 } );
+
+        //// SPRITESHEET////
+        this.load.spritesheet('zombie', 'assets/Spritesheet/zombie.png', { frameWidth: 32, frameHeight: 48 } );
 
     } // FIN DE PRELOAD
 
@@ -217,7 +221,7 @@ class TableauCimetiere extends Tableau{
         this.sky8.setScrollFactor(0);
         this.sky8.setOrigin(0,0);  
 
-        //this.corbeauxGif = new CorbeauxGif(this,400,550,'monster_zombie');
+        
 
         //quelques monstres 
         //new MonsterLoupgarou(this,2000,448-hauteurSol);
@@ -233,6 +237,12 @@ class TableauCimetiere extends Tableau{
         {
             new MonsterZombie(this,posX,408-hauteurSol,"monster-zombie");
         }
+        /*
+        for(let posX=386;posX<largeurDuTableau-limitSpawnMonster;posX+=largeur)
+        {
+            this.EnnemyZombie = new EnnemyZombie(this,posX,408-hauteurSol,'zombie');
+        }
+        */
         // FIN DE QUELQUES MONSTRES
 
         /*
@@ -308,4 +318,4 @@ class TableauCimetiere extends Tableau{
 
     } // FIN DE UPDATE
 
-} // FIN DE LA CLASSS TABLEAUCIMETIERE
+} // FIN DE LA CLASSS CEMETERY

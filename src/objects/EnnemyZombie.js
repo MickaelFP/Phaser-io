@@ -1,7 +1,7 @@
-class CorbeauxGif extends Phaser.Physics.Arcade.Sprite{
+class EnnemyZombie extends Phaser.Physics.Arcade.Sprite{
 
     constructor(scene, x, y,) {
-        super(scene, x, y, 'monster-zombie');
+        super(scene, x, y, 'zombie');
 
 	scene.add.existing(this);
     scene.physics.add.existing(this);
@@ -20,7 +20,7 @@ class CorbeauxGif extends Phaser.Physics.Arcade.Sprite{
 
     this.anims.create({
         key: 'moving',
-        frames: this.anims.generateFrameNumbers('monster-zombie', { start: 0, end: 5 }),
+        frames: this.anims.generateFrameNumbers('zombie', { start: 0, end: 5 }),
         frameRate: 10,
         repeat: -1
     });
