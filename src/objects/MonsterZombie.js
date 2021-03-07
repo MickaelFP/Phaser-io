@@ -6,16 +6,24 @@ class MonsterZombie extends ObjetEnnemi{
      * @param y
      */
     constructor(scene, x, y) {                                                                      //OBLIGATOIRE
-        super(scene, x, y,"monster-zombie");                                                       //OBLIGATOIRE
+        super(scene, x, y,"zombie");                                                       //OBLIGATOIRE
         //pas de gravité
         this.body.allowGravity=false;
         
         //this.physics.add.sprite(300,this.sys.canvas.height-70,"monster-zombie");
-        this.setDisplaySize(64,64);
+        this.setDisplaySize(40,60);
         this.setCollideWorldBounds(true);
         //this.setBounce(1);
         this.setVelocityX(0);
         //this.physics.add.overlap(this.player, this.monstre, this.hitSpike, null, this);
+
+        this.anims.create({
+            key: 'moving',
+            frames: this.anims.generateFrameNumbers('zombie', { start: 2, end: 3 }),
+            frameRate: 2,
+            repeat: -1,
+        });
+        this.anims.play('moving', true);
 
         // X
         this.originalX=x;
@@ -24,7 +32,7 @@ class MonsterZombie extends ObjetEnnemi{
         
         // Y
         this.originalY=y;
-        this.minY=y+10;
+        this.minY=y;
         this.maxY=y;
         
      // on applique les propriété du début de l'animation

@@ -10,7 +10,6 @@ class Cemetery extends Tableau{
         //plateformes
         this.load.image('platformStone', 'assets/platformStone.png');
         //monstres
-        this.load.image('monster-zombie', 'assets/monster-zombie2.png');
         this.load.image('monster-araignee', 'assets/monster-araignee.png');
         this.load.image('monster-slime', 'assets/monster-slime.png');
         this.load.image('monster-fly', 'assets/monster-fly.png');
@@ -37,7 +36,7 @@ class Cemetery extends Tableau{
         //this.load.gif('corbeau', 'assets/animations/animationCorbeau2.gif');
 
         //// SPRITESHEET////
-        this.load.spritesheet('zombie', 'assets/Spritesheet/zombie.png', { frameWidth: 32, frameHeight: 48 } );
+        this.load.spritesheet('zombie', 'assets/Spritesheet/zombie1.png', { frameWidth: 32, frameHeight: 48 } );
 
     } // FIN DE PRELOAD
 
@@ -118,16 +117,27 @@ class Cemetery extends Tableau{
         // on active leurs colisions avec les éléments que l'on souhaite
         this.physics.add.collider(this.player,this.platforms);
         this.physics.add.collider(this.stars, this.platforms);
+        //this.physics.add.collider(this.EnnemyZombie, this.platforms);
         // FIN DE QUELQUES PLATEFORMES        
 
         //création du sol
         let rouge=this.physics.add.sprite(0,height-hauteurSol);//,"sol");
-        rouge.setDisplaySize(largeurDuTableau,hauteurSol)//taille de l'objet
+        rouge.setDisplaySize(largeurDuTableau,hauteurSol);//taille de l'objet
         rouge.setOrigin(0,0);//pour positionner plus facilement
         rouge.body.allowGravity=0; //la gravité n'a pas d'effet ici
         rouge.setImmovable(true); //ne bouge pas quand on rentre dedans
         this.physics.add.collider(this.player, rouge);//le joueur rebondit dessus
         this.physics.add.collider(this.stars, rouge);//les étoiles rebondissent dessus
+
+        /*
+        //création limiteGauche
+        let bleu=this.physics.add.sprite(0,0);//,"sol");
+        bleu.setDisplaySize(20,448);//taille de l'objet
+        bleu.setOrigin(0,0);//pour positionner plus facilement
+        bleu.body.allowGravity=0; //la gravité n'a pas d'effet ici
+        bleu.setImmovable(true); //ne bouge pas quand on rentre dedans
+        //this.physics.add.collider(this.player, bleu);//le joueur rebondit dessus
+        */
 
         //on change de ciel, on fait une tileSprite ce qui permet d'avoir une image qui se répète
         this.sky=this.add.tileSprite
@@ -227,7 +237,6 @@ class Cemetery extends Tableau{
         //new MonsterLoupgarou(this,2000,448-hauteurSol);
 
         let limitSpawnMonster=300;
-        let largeurSizeSlime=50;
         this.monstre=this.physics.add.group();
         for(let posX=386;posX<largeurDuTableau-limitSpawnMonster;posX+=largeur)
         {
@@ -235,14 +244,14 @@ class Cemetery extends Tableau{
         }
         for(let posX=386;posX<largeurDuTableau-limitSpawnMonster;posX+=largeur)
         {
-            new MonsterZombie(this,posX,408-hauteurSol,"monster-zombie");
+            this.monsterZombie = new MonsterZombie(this,posX,420-hauteurSol,'zombie');
+            //this.physics.add.collider(this.EnnemyZombie, rouge);
         }
-        /*
-        for(let posX=386;posX<largeurDuTableau-limitSpawnMonster;posX+=largeur)
-        {
-            this.EnnemyZombie = new EnnemyZombie(this,posX,408-hauteurSol,'zombie');
-        }
-        */
+        //this.physics.add.collider(this.EnnemyZombie, limitDroite);
+        //this.physics.add.collider(this.EnnemyZombie, limitGauche);
+        //this.physics.add.collider(this.EnnemyZombie, this.platforms);
+    
+        //this.physics.add.collider(this.EnnemyZombie, platforms);
         // FIN DE QUELQUES MONSTRES
 
         /*
@@ -276,6 +285,7 @@ class Cemetery extends Tableau{
     update()
     {
         super.update();
+        //Zombie.update();
 
         //le ciel et les étoiles
         this.sky.tilePositionX=this.cameras.main.scrollX*0.02;//*0.3//0.15;
