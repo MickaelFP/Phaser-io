@@ -95,3 +95,12 @@ for(let posX = 400 ;posX<largeurDuTableau;posX+=400){
 
 
 
+        /*
+        //création limiteGauche
+        let bleu=this.physics.add.sprite(0,0);//,"sol");
+        bleu.setDisplaySize(20,448);//taille de l'objet
+        bleu.setOrigin(0,0);//pour positionner plus facilement
+        bleu.body.allowGravity=0; //la gravité n'a pas d'effet ici
+        bleu.setImmovable(true); //ne bouge pas quand on rentre dedans
+        //this.physics.add.collider(this.player, bleu);//le joueur rebondit dessus
+        */

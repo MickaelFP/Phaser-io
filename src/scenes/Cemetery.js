@@ -129,16 +129,6 @@ class Cemetery extends Tableau{
         this.physics.add.collider(this.player, rouge);//le joueur rebondit dessus
         this.physics.add.collider(this.stars, rouge);//les étoiles rebondissent dessus
 
-        /*
-        //création limiteGauche
-        let bleu=this.physics.add.sprite(0,0);//,"sol");
-        bleu.setDisplaySize(20,448);//taille de l'objet
-        bleu.setOrigin(0,0);//pour positionner plus facilement
-        bleu.body.allowGravity=0; //la gravité n'a pas d'effet ici
-        bleu.setImmovable(true); //ne bouge pas quand on rentre dedans
-        //this.physics.add.collider(this.player, bleu);//le joueur rebondit dessus
-        */
-
         //on change de ciel, on fait une tileSprite ce qui permet d'avoir une image qui se répète
         this.sky=this.add.tileSprite
         (
@@ -234,7 +224,6 @@ class Cemetery extends Tableau{
         
 
         //quelques monstres 
-        //new MonsterLoupgarou(this,2000,448-hauteurSol);
 
         let limitSpawnMonster=300;
         this.monstre=this.physics.add.group();
@@ -247,26 +236,8 @@ class Cemetery extends Tableau{
             this.monsterZombie = new MonsterZombie(this,posX,420-hauteurSol,'zombie');
             //this.physics.add.collider(this.EnnemyZombie, rouge);
         }
-        //this.physics.add.collider(this.EnnemyZombie, limitDroite);
-        //this.physics.add.collider(this.EnnemyZombie, limitGauche);
-        //this.physics.add.collider(this.EnnemyZombie, this.platforms);
-    
-        //this.physics.add.collider(this.EnnemyZombie, platforms);
         // FIN DE QUELQUES MONSTRES
 
-        /*
-        //// QUELQUES GIFS ////
-        //this.gifs=this.physics.add.group();
-        //let randomVariable1 = Phaser.Math.Between(100, 400);
-        //corbeaux
-        for(let posX=400+randomVariable1;posX<largeurDuTableau;posX+=400+randomVariable1)
-        {
-            this.CorbeauxGif = new CorbeauxGif(this,posX,295,"monster_zombie");
-            this.CorbeauxGif.setDepth(12)
-        }
-
-        //// FIN DE QUELQUES GIFS ////
-        */
 
         //fait passer les éléments devant le ciel
         this.platforms.setDepth(10)
