@@ -24,7 +24,7 @@ class EnnemyZombie extends ObjetEnnemi{
         this.anims.create({
         key: 'moving',
         frames: this.anims.generateFrameNumbers('zombie', { start: 2, end: 3 }),
-        frameRate: 2,
+        frameRate: 4,
         repeat: -1,
         flipX: true,
         });

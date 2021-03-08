@@ -11,10 +11,10 @@ class Cemetery extends Tableau{
         this.load.image('platformStone', 'assets/platformStone.png');
         //monstres
         this.load.image('monster-araignee', 'assets/monster-araignee.png');
-        this.load.image('monster-slime', 'assets/monster-slime.png');
         this.load.image('monster-fly', 'assets/monster-fly.png');
-        this.load.image('monster-loupgarou', 'assets/monster-loupgarou.png');
-        //decors
+        //objects
+        this.load.image('vase', 'assets/Object/vase1.png');
+        //backgrounds
         this.load.image('nuitEtoile', 'assets/sky_nuit2.png');
         this.load.image('sol', 'assets/sol_4000.png');
         this.load.image('solFond2', 'assets/Sol_fond2.png');
@@ -222,8 +222,6 @@ class Cemetery extends Tableau{
         this.sky8.setScrollFactor(0);
         this.sky8.setOrigin(0,0);  
 
-        
-
         //quelques monstres 
 
         let limitSpawnMonster=300;
@@ -239,6 +237,15 @@ class Cemetery extends Tableau{
         }
         // FIN DE QUELQUES MONSTRES
 
+        /*
+                //// création d'objets ////
+        //this.platforms=this.physics.add.staticGroup();
+        for(let posX=135;posX<largeurDuTableau;posX+=largeur)
+        {
+            new ObjectVase(this,posX,432-hauteurSol,'vase');
+            this.physics.add.collider(this.ObjectVase, this.platforms);
+        }
+        */
 
         //fait passer les éléments devant le ciel
         this.platforms.setDepth(10)
@@ -247,6 +254,7 @@ class Cemetery extends Tableau{
         rouge.setDepth(10)
         this.blood.setDepth(10)
         this.blood2.setDepth(10)
+        //this.ObjectVase.setDepth(10)
         this.sky8.setDepth(12)
         
             
