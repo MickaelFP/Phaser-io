@@ -37,6 +37,7 @@ class Cemetery extends Tableau{
 
         //// SPRITESHEET////
         this.load.spritesheet('zombie', 'assets/Spritesheet/zombie1.png', { frameWidth: 32, frameHeight: 48 } );
+        this.load.spritesheet('zombie2', 'assets/Spritesheet/zombie2.png', { frameWidth: 32, frameHeight: 48 } );
 
     } // FIN DE PRELOAD
 
@@ -233,7 +234,7 @@ class Cemetery extends Tableau{
         }
         for(let posX=386;posX<largeurDuTableau-limitSpawnMonster;posX+=largeur)
         {
-            this.monsterZombie = new MonsterZombie(this,posX,420-hauteurSol,'zombie');
+            this.monsterZombie = new MonsterZombie(this,posX,420-hauteurSol,'zombie2');
             //this.physics.add.collider(this.EnnemyZombie, rouge);
         }
         // FIN DE QUELQUES MONSTRES

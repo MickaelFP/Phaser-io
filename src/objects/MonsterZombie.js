@@ -6,7 +6,7 @@ class MonsterZombie extends ObjetEnnemi{
      * @param y
      */
     constructor(scene, x, y) {                                                                      //OBLIGATOIRE
-        super(scene, x, y,"zombie");                                                       //OBLIGATOIRE
+        super(scene, x, y,"zombie2");                                                       //OBLIGATOIRE
         //pas de gravité
         this.body.allowGravity=false;
         
@@ -19,7 +19,7 @@ class MonsterZombie extends ObjetEnnemi{
 
         this.anims.create({
             key: 'moving',
-            frames: this.anims.generateFrameNumbers('zombie', { start: 2, end: 3 }),
+            frames: this.anims.generateFrameNumbers('zombie2', { start: 8, end: 12 }),
             frameRate: 2,
             repeat: -1,
         });
