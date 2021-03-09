@@ -95,12 +95,27 @@ for(let posX = 400 ;posX<largeurDuTableau;posX+=400){
 
 
 
-        /*
-        //création limiteGauche
-        let bleu=this.physics.add.sprite(0,0);//,"sol");
-        bleu.setDisplaySize(20,448);//taille de l'objet
-        bleu.setOrigin(0,0);//pour positionner plus facilement
-        bleu.body.allowGravity=0; //la gravité n'a pas d'effet ici
-        bleu.setImmovable(true); //ne bouge pas quand on rentre dedans
-        //this.physics.add.collider(this.player, bleu);//le joueur rebondit dessus
-        */
+/*
+//création limiteGauche
+let bleu=this.physics.add.sprite(0,0);//,"sol");
+bleu.setDisplaySize(20,448);//taille de l'objet
+bleu.setOrigin(0,0);//pour positionner plus facilement
+bleu.body.allowGravity=0; //la gravité n'a pas d'effet ici
+bleu.setImmovable(true); //ne bouge pas quand on rentre dedans
+//this.physics.add.collider(this.player, bleu);//le joueur rebondit dessus
+*/
+
+
+
+//new ObjectVase(this,135,432-hauteurSol,'vase');
+for(let posX=135;posX<largeurDuTableau;posX+=largeur)
+{
+    let object=this.physics.add.sprite(135,height-hauteurSol-32, "vase");
+    let objectY=hauteurSol;
+    //let object=this.object.create(objectX ,objectY,"vase");
+    object.setDisplaySize(32,32);
+    object.setOrigin(0,0);
+    object.body.allowGravity=0;
+    object.setImmovable(false);
+    //this.physics.add.collider(this.player, object);
+}

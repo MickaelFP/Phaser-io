@@ -17,6 +17,10 @@ class ObjectVase extends ObjetEnnemi{
         this.setVelocityX(0);
         //this.setBodySize(this.body.width-5,this.body.height);
         this.setImmovable(false);
+        this.setOrigin(0,0);
+        this.setBodySize(32,32)
+        //object.body.allowGravity=0;
+        //this.physics.add.collider(this.player, object);
         //this.physics.add.collider(this.player, this.ObjectVase);
         //this.physics.add.overlap(this.player, this.monstre, this.hitObject, null, this);
 

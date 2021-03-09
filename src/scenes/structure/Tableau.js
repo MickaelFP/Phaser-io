@@ -264,7 +264,7 @@ class Tableau extends Phaser.Scene{
         }
     } // FIN DE HITMONSTER
 
-    
+    /*
     // on définit quand l'object est détruit, quand et pourquoi
     /**
      * Quand on touche un object
@@ -272,7 +272,7 @@ class Tableau extends Phaser.Scene{
      * @param {Player} player
      * @param {Phaser.Physics.Arcade.Sprite} monster
      *//*
-    hitObject(player, object)
+    hitObject(player, monster)
     {
         let me=this;
         if(monster.isDead !== true)
@@ -304,7 +304,7 @@ class Tableau extends Phaser.Scene{
                 }
                 this.music.play(musicConfig);
                 //notre joueur rebondit sur le monstre
-                player.directionX=-10;
+                player.directionX=500;
             }
         }
     }*/
