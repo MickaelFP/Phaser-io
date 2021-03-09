@@ -5,7 +5,7 @@ class ObjectVase extends ObjetEnnemi{
      * @param x
      * @param y
      */
-    constructor(scene, x, y) {                                                                      //OBLIGATOIRE
+    constructor(scene, x, y) {                                                           //OBLIGATOIRE
         super(scene, x, y,"vase");                                                       //OBLIGATOIRE
         //pas de gravité
         this.body.allowGravity=true;
@@ -18,7 +18,7 @@ class ObjectVase extends ObjetEnnemi{
         //this.setBodySize(this.body.width-5,this.body.height);
         this.setImmovable(false);
         //this.physics.add.collider(this.player, this.ObjectVase);
-        this.physics.add.overlap(this.player, this.monstre, this.hitSpike, null, this);
+        //this.physics.add.overlap(this.player, this.monstre, this.hitObject, null, this);
 
         /*let objectY=hauteurSol;
         let object=this.object.create(posX ,objectY,"vase");

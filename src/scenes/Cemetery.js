@@ -246,12 +246,24 @@ class Cemetery extends Tableau{
             this.physics.add.collider(this.ObjectVase, this.platforms);
         }
         */
+        //new ObjectVase(this,135,432-hauteurSol,'vase');
+        let object=this.physics.add.sprite(135,height-hauteurSol, "vase");
+        //let objectY=hauteurSol;
+        //let objectX=135;
+        //let object=this.object.create(objectX ,objectY,"vase");
+        object.setDisplaySize(32,32);
+        object.setOrigin(0,0);
+        object.body.allowGravity=0;
+        object.setImmovable(false);
+        this.physics.add.collider(this.player, object);
+
 
         //fait passer les éléments devant le ciel
         this.platforms.setDepth(10)
         this.stars.setDepth(10)
         this.player.setDepth(10)
         rouge.setDepth(10)
+        object.setDepth(10)
         this.blood.setDepth(10)
         this.blood2.setDepth(10)
         //this.ObjectVase.setDepth(10)

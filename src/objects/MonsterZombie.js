@@ -5,7 +5,7 @@ class MonsterZombie extends ObjetEnnemi{
      * @param x
      * @param y
      */
-    constructor(scene, x, y) {                                                                      //OBLIGATOIRE
+    constructor(scene, x, y) {                                                              //OBLIGATOIRE
         super(scene, x, y,"zombie2");                                                       //OBLIGATOIRE
         //pas de gravité
         this.body.allowGravity=false;

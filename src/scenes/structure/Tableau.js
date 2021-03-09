@@ -264,6 +264,51 @@ class Tableau extends Phaser.Scene{
         }
     } // FIN DE HITMONSTER
 
+    
+    // on définit quand l'object est détruit, quand et pourquoi
+    /**
+     * Quand on touche un object
+     * si on le touche par en haut on le tue, sinon c'est lui qui nous tue
+     * @param {Player} player
+     * @param {Phaser.Physics.Arcade.Sprite} monster
+     *//*
+    hitObject(player, object)
+    {
+        let me=this;
+        if(monster.isDead !== true)
+        { //si notre object n'est pas déjà détruit
+            if(
+                player.body.velocity.y > 0
+                // et si le bas du player est plus haut que l'object
+                && player.getBounds().bottom < monster.getBounds().top+30
+            ){
+                ui.gagne();
+                monster.isDead=true; //ok l'object est détruit' est mort
+                monster.visible=false;
+                monster.disableBody(true, true);
+                this.saigne(monster,function()
+                {
+                    //à la fin de la petite anim...ben il se passe rien :)
+                })
+                this.music = this.sound.add('splash');
+
+                var musicConfig = 
+                {
+                    mute: false,
+                    volume: 0.3,
+                    rate : 1,
+                    detune: 0,
+                    seek: 0,
+                    loop: false,
+                    delay:0,
+                }
+                this.music.play(musicConfig);
+                //notre joueur rebondit sur le monstre
+                player.directionX=-10;
+            }
+        }
+    }*/
+
     /**
      * Pour reset cette scène proprement
      * @private
