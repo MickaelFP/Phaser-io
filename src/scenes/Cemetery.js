@@ -238,14 +238,14 @@ class Cemetery extends Tableau{
         // FIN DE QUELQUES MONSTRES
 
         
-                //// création d'objets ////
+         /*       //// création d'objets ////
         //this.platforms=this.physics.add.staticGroup();
         for(let posX=135;posX<largeurDuTableau;posX+=largeur)
         {
             this.ObjectVase = new ObjectVase(this,posX,432-hauteurSol-32,'vase');
             this.physics.add.collider(rouge, this.ObjectVase);
             //this.physics.add.collider(this.player, this.ObjectVase);
-        }
+        }*/
 
         //fait passer les éléments devant le ciel
         this.platforms.setDepth(10)
