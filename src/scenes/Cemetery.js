@@ -46,6 +46,7 @@ class Cemetery extends Tableau{
         super.create();
 
         //on appel le(s) son(s)
+        /*
         this.music = this.sound.add('AmbianceHalloween1');
 
         var musicConfig = 
@@ -61,6 +62,7 @@ class Cemetery extends Tableau{
         this.music.play(musicConfig);
         //this.Halloween1 = this.sound.add('AmbianceHalloween1');
         //this.Halloween1.play();
+        */
 
         //on définit la taille du tableau
         /*pour un défilement uniquement horizontale on définie une hauteur identique au cadre du jeu.
