@@ -22,6 +22,7 @@ class Tableau extends Phaser.Scene{
         this.load.audio('os', 'assets/Sound/os_sound.mp3');
         this.load.audio('splash', 'assets/Sound/splash.mp3');
         this.load.audio('crack', 'assets/Sound/crack.mp3');
+        this.load.audio('AmbianceHalloween1', 'assets/Sound/Ambiance_halloween_1.mp3');
         // this.load.spritesheet('corbeau', 'assets/annimations.png', { frameWidth: 32, frameHeight: 32 } );
         this.load.spritesheet('player',
             'assets/player.png',
@@ -54,6 +55,20 @@ class Tableau extends Phaser.Scene{
         this.blood2.displayWidth=64;
         this.blood2.displayHeight=64;
         this.blood2.visible=false
+        
+        this.music = this.sound.add('AmbianceHalloween1');
+
+        var musicConfig = 
+        {
+            mute: false,
+            volume: 0.5,
+            rate : 1,
+            detune: 0,
+            seek: 0,
+            loop: true,
+            delay:0,
+        }
+        this.music.play(musicConfig);
 
     }
     update()
