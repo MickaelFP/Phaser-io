@@ -6,7 +6,7 @@ class Cemetery extends Tableau{
         super.preload();
         //// IMAGES ////
         //collectibles
-        this.load.image('star', 'assets/star.png');
+        this.load.image('star', 'assets/os.png');
         //plateformes
         this.load.image('platformStone', 'assets/platformStone.png');
         //monstres
@@ -15,7 +15,7 @@ class Cemetery extends Tableau{
         //objects
         this.load.image('vase', 'assets/Object/vase1.png');
         //backgrounds
-        this.load.image('nuitEtoile', 'assets/sky_nuit2.png');
+        this.load.image('nuitEtoile', 'assets/night.jpg'); // ou sky_nuit2.png
         this.load.image('sol', 'assets/sol_4000.png');
         this.load.image('solFond2', 'assets/Sol_fond2.png');
         this.load.image('tombes', 'assets/tombes2.png');
@@ -38,6 +38,9 @@ class Cemetery extends Tableau{
         //// SPRITESHEET////
         this.load.spritesheet('zombie', 'assets/Spritesheet/zombie1.png', { frameWidth: 32, frameHeight: 48 } );
         this.load.spritesheet('zombie2', 'assets/Spritesheet/zombie2.png', { frameWidth: 32, frameHeight: 48 } );
+
+        //// TILEMAPS ////
+        //this.load.tilemapTiledJSON('map', 'assets/tilemaps/level1.json');
 
     } // FIN DE PRELOAD
 
@@ -62,6 +65,15 @@ class Cemetery extends Tableau{
         this.music.play(musicConfig);
         //this.Halloween1 = this.sound.add('AmbianceHalloween1');
         //this.Halloween1.play();
+        */
+
+        /*
+        //on construit la tilemap
+        const backgroundImage = this.add.image(0, 0,'background').setOrigin(0, 0);
+        backgroundImage.setScale(2, 0.8);
+        const map = this.make.tilemap({ key: 'map' });
+        const tileset = map.addTilesetImage('kenney_simple_platformer', 'tiles');
+        const platforms = map.createStaticLayer('Platforms', tileset, 0, 200);
         */
 
         //on définit la taille du tableau
@@ -270,7 +282,6 @@ class Cemetery extends Tableau{
         //this.ObjectVase.setDepth(10)
         this.blood.setDepth(10)
         this.blood2.setDepth(10)
-        //this.ObjectVase.setDepth(10)
         this.sky8.setDepth(12)
         
             

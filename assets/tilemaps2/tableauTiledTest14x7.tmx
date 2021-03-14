@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.4" tiledversion="1.4.3" orientation="orthogonal" renderorder="right-down" width="14" height="7" tilewidth="64" tileheight="64" infinite="0" nextlayerid="4" nextobjectid="10">
+ <editorsettings>
+  <export target="tableauTiledTest14x7.tmx" format="tmx"/>
+ </editorsettings>
+ <tileset firstgid="1" source="tableauTiledTileset14x7.tsx"/>
+ <layer id="1" name="Plateformes" width="14" height="7">
+  <data encoding="base64">
+   AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAKwAAACsAAAArAAAAKwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAKwAAACsAAAArAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAKwAAACsAAAArAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAEAAAABAAAAAQAAAAEAAAABAAAAAQAAAAEAAAABAAAAAQAAAAEAAAABAAAAAQAAAAEAAAA=
+  </data>
+ </layer>
+ <objectgroup id="3" name="Calque d'Objets 1">
+  <object id="3" gid="49" x="132" y="254.667" width="64" height="64"/>
+  <object id="4" gid="49" x="438.667" y="134.667" width="64" height="64"/>
+  <object id="5" gid="49" x="714.667" y="262.667" width="64" height="64"/>
+ </objectgroup>
+</map>

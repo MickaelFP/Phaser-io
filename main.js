@@ -1,7 +1,6 @@
 
 let width=14*64; //896;
 let height=7*64; //448;
-//var Zombie;
 
 let config = {
     type: Phaser.AUTO,
@@ -28,6 +27,7 @@ let config = {
         new Tableau07("Niveau 1"),
         new TableauStart("Niveau 1"),
         new Cemetery("Niveau 1"),
+        //new TableauTileTest("Niveau 1"),
 
     ],
     width: width,

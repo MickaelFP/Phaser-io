@@ -15,7 +15,7 @@ class Tableau extends Phaser.Scene{
      * Par défaut on charge un fond et le player
      */
     preload(){
-        this.load.image('sky', 'assets/sky_nuit2.png');
+        this.load.image('sky', 'assets/ciel.png');
         this.load.image('spike', 'assets/spike.png');
         this.load.image('blood', 'assets/bloodblack.png');
         this.load.image('osExplosion', 'assets/persoMort.png');
@@ -225,7 +225,7 @@ class Tableau extends Phaser.Scene{
             ){
                 ui.gagne();
                 monster.isDead=true; //ok le monstre est mort
-                monster.visible=false;
+                //monster.visible=false;
                 monster.disableBody(true, true);
                 this.saigne(monster,function()
                 {
